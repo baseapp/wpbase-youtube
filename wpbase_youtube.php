@@ -48,7 +48,7 @@ function vidfetch_video_page() {
         global $user_ID;
         $post = array();
         $post['post_type'] = 'page'; //could be 'page' for example
-        $post['post_content'] = 'This is video page';
+        $post['post_content'] = '{wpbase-youtube}';   //Shortcode to identify the page
         $post['post_author'] = '1';
         $post['post_status'] = 'publish'; //draft
         $post['post_title'] = 'Videos';
