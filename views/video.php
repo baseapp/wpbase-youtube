@@ -1,18 +1,17 @@
 <h2><?php echo $video['title']; ?></h2>
 <div class="watch">
-    <?php //var_dump($video);
+    <?php
+    //var_dump($video);
     global $wpdb;
-    $table_name="wp_vidfetch_history";
-    $rows_affected = $wpdb->insert( $table_name, array( 
-        'vid_id' => $video['id'], 
-        'vid_title' => $video['title'], 
-        'type' => 'history', 
-        'vid_rating' => $video['rating'], 
+    $table_name = "wp_vidfetch_history";
+    $rows_affected = $wpdb->insert($table_name, array(
+        'vid_id' => $video['id'],
+        'vid_title' => $video['title'],
+        'type' => 'history',
+        'vid_rating' => $video['rating'],
         'vid_views' => $video['views'],
-        'vid_thumbnail' => $video['thumbnail'] 
-        ) );
-    
-    
+        'vid_thumbnail' => $video['thumbnail']
+            ));
     ?>
     <div class="embed">
 

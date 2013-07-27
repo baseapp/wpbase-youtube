@@ -38,6 +38,27 @@ function get_page_by_name($pagename) {
     return false;
 }
 
+
+add_action( 'wp_enqueue_scripts', 'register_plugin_styles' );
+
+function register_plugin_styles() {
+	wp_register_style( 'vidfetch-css', plugins_url( 'wpbase_youtube/css/style.css' ) );
+	wp_enqueue_style( 'vidfetch-css' );
+}
+
+
+function load_js_file()
+{
+	wp_enqueue_script('jquery');
+	   wp_enqueue_script('js', plugins_url('wpbase_youtube/js/jquery.js') );
+        wp_enqueue_script('the_js', plugins_url( 'wpbase_youtube/js/freedown.js' ) );
+     
+        //echo "test";
+}
+
+add_action('wp_head', 'load_js_file');
+
+
 add_action('init', 'vidfetch_video_page');
 
 function vidfetch_video_page() {
