@@ -71,13 +71,18 @@
         <div class="paging">
 
             <?php if ($page > 1) {
+<<<<<<< HEAD
                 ?> <a title="<?php echo $previous; ?>" href="<?php
             echo site_url();
+=======
+                ?> <a title="<?php echo $previous; ?>" href="<?php echo site_url();
+>>>>>>> origin/master
             echo '/videos/sort' . $sort . '/' . $key . '/page' . ($page - 1);
                 ?>"> <?php
                echo $previous;
            }
             ?> </a> <?php
+<<<<<<< HEAD
                 if (($page - 1) > 0 && ($page <= $total_page)) {
                 ?> <a title="<?php echo $page ?>" href="<?php
                 echo site_url();
@@ -86,10 +91,21 @@
                     <span><?php
                 echo ($page - 1);
             }
+=======
+            
+            if (($page - 1) > 0 && ($page <= $total_page)) {
+                ?> <a title="<?php echo $page ?>" href="<?php echo site_url();
+               echo '/videos/sort' . $sort . '/' . $key . '/page' . ($page - 1);
+               ?>"> 
+                    <span><?php
+               echo ($page - 1);
+           }
+>>>>>>> origin/master
             ?> </span></a> <?php ?><span><b><?php echo $page; ?></b></span> 
 
 
 
+<<<<<<< HEAD
             <?php if (($page + 1) <= $total_page) {
                 ?> <a title="<?php echo ($page + 1); ?>" href="<?php
             echo site_url();
@@ -101,16 +117,41 @@
                 } else {
                     echo $page;
                     ?><br /><?php if (($page + 1) <= $total_page) echo ($page + 1); ?> <br /> <?php
+=======
+                   <?php if (($page + 1) <= $total_page) {
+                       ?> <a title="<?php echo ($page + 1); ?>" href="<?php echo site_url();
+                echo '/videos/sort' . $sort . '/' . $key . '/page' . ($page + 1);
+                       ?>"> 
+                <?php
+                ?><span><?php echo ($page + 1);
+                ?></span>
+                </a> <?php
+        } 
+        
+        
+        
+        else {
+            echo $page;
+                ?><br /><?php if (($page + 1) <= $total_page) echo ($page + 1); ?> <br /> <?php
+>>>>>>> origin/master
             if (($page + 2) <= $total_page)
                 echo ($page + 2);
         }
         if ($page != $total_page) {
+<<<<<<< HEAD
                     ?> <a title="<?php echo $next; ?>" href="<?php
             echo site_url();
             echo '/videos/sort' . $sort . '/' . $key . '/page' . ($page + 1);
                     ?>"> <?php
                echo $next;
                     ?> </a> <?php } ?>
+=======
+                ?> <a title="<?php echo $next; ?>" href="<?php echo site_url();
+                   echo '/videos/sort' . $sort . '/' . $key . '/page' . ($page + 1);
+                ?>"> <?php
+                echo $next;
+                ?> </a> <?php } ?>
+>>>>>>> origin/master
 
 
 
