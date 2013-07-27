@@ -142,7 +142,10 @@ class Youtube {
                 $video['id'] = $ids[1][$i];
                 $video['rating'] = isset($ratings[1][$i]) ? $ratings[1][$i] : 0;
                 $rvideos[] = $video;
+                
             }
+            
+           // var_dump($rvideo);
         }
 
         if ($canCache && count($rvideos) > 5) {
