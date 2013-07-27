@@ -123,14 +123,14 @@ class Wpbase_youtube_Plugin extends Wpbase_youtube_LifeCycle {
             if (count($parts) > 1) {
                 $wp->query_vars['pagename'] = 'videos';
                 $yPath = explode('/', "list/" . $parts[1]);
-                //var_dump($yPath);
+               // var_dump($yPath);
             }
 
             $parts = explode('/video/', $request);
             if (count($parts) > 1) {
                 $wp->query_vars['pagename'] = 'videos';
                 $yPath = explode('/', "view/" . $parts[1]);
-               // var_dump($yPath);
+                //var_dump($yPath);
             }
         }
     }
@@ -174,22 +174,22 @@ class Wpbase_youtube_Plugin extends Wpbase_youtube_LifeCycle {
                         if (substr($yPath[1], 0, 4) === "sort") {      //for videos/sort/key format
                             // echo " in here ";
                             $sort = str_replace("sort", "", $yPath[1]);
-                           // echo "sort = " . $sort;
+                          // echo "sort = " . $sort;
                             $keywords = $yPath[2];
-                           // echo " key = " . $keywords;
+                          // echo " key = " . $keywords;
 
                             if (substr($yPath[3], 0, 4) === "page") {         //check if page is set
-                                $page = str_replace("page", "", $yPath[3]);
-                               // echo " page = " . $page;
+                                $page =$yPath[4];// str_replace("page", "", $yPath[3]);
+                                //echo " page = " . $page;
                             }
                         }
 
-                        if (substr($yPath[2], 0, 4) === "page") {      //for videos/key/page format url
+                        else if (substr($yPath[2], 0, 4) === "page") {      //for videos/key/page format url
                             //echo "sort = " . $sort;
                            // echo " key = " . $keywords;
 
 
-                            $page = str_replace("page", "", $yPath[2]);
+                            $page = $yPath[3];//str_replace("page", "", $yPath[2]);
                            // echo " page = " . $page;
                         }
 
@@ -203,7 +203,7 @@ class Wpbase_youtube_Plugin extends Wpbase_youtube_LifeCycle {
                         $videos = $yt->videos($keywords, $sort, 15, $page);
 
 
-                        $replace = $this->getView('videos', array('videos' => $videos, 'page' => $page));
+                        $replace = $this->getView('videos', array('videos' => $videos, 'page' => $page),$keywords,$sort);
 
                         break;
 
@@ -220,7 +220,7 @@ class Wpbase_youtube_Plugin extends Wpbase_youtube_LifeCycle {
         return $content;
     }
 
-    public function getView($view, $vars) {
+    public function getView($view, $vars, $key=NULL,$sort="relevance") {
 
         $viewsDir = dirname(__FILE__) . '/views/';
         $viewPath = dirname(__FILE__) . '/views/' . $view . '.php';
@@ -230,6 +230,7 @@ class Wpbase_youtube_Plugin extends Wpbase_youtube_LifeCycle {
 
         extract($vars);
         ob_start();
+        
         include $viewPath;
         $retVal = ob_get_contents();
         ob_end_clean();
