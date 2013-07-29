@@ -22,26 +22,29 @@ function wpbyURLHandler(&$wp) {
 
 
     if (strstr($request, '/videos/') || strstr($request, '/video/')) {
-
+  
         $parts = explode('/videos/', $request);
-        // echo "var dump of parts";
-        // var_dump($parts);
+
         if (count($parts) > 1) {
             $wp->query_vars['pagename'] = 'videos';
             $yPath = explode('/', "list/" . $parts[1]);
-            // var_dump($yPath);
         }
 
         $parts = explode('/video/', $request);
         if (count($parts) > 1) {
             $wp->query_vars['pagename'] = 'videos';
             $yPath = explode('/', "view/" . $parts[1]);
-            //var_dump($yPath);
         }
+        
+        if(empty($yPath[1])) {
+            $yPath[0] = 'home';
+        }
+
     }
 }
 
 // All the hooks 
+register_uninstall_hook(__FILE__,'wpbyUninstall');
 register_activation_hook(__FILE__, 'wpbyActivation');
 register_deactivation_hook(__FILE__, 'wpbyDeactivation');
 

@@ -11,7 +11,7 @@
     border:1px solid #ccc;
     padding: 10px;
     height: 150px;
-    background-color: #ebf8ff;
+
 }
 
 .wpby-list .video .thumb a img {
@@ -26,8 +26,8 @@
 .wpby-list .video .thumb .views {
     float: right;
     color: #999;
-    margin-top: -20px;
-    padding-right: 0px;
+    margin-top: -18px;
+    padding-right: 16px;
     font-size: 10px;
     background:url(../images/sstats.png) no-repeat 100% 0px;
 }
@@ -75,4 +75,88 @@
 }
 .site-content {
     margin-top: 0px;
+}
+
+.wpby-video .watch {
+    margin:20px;
+}
+
+.wpby-video .watch .embed {
+
+ margin-left:0px;
+
+}
+
+.wpby-video .watch .meta {
+    margin-top:10px;
+    border: 1px solid #efefef;
+    padding: 10px;    
+}
+
+.wpby-video .watch .meta .info {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.wpby-video .description {
+    font-size: 12px;
+}
+
+.watch .meta .date {
+    padding-left: 20px;
+    background:url(../images/cal.png) no-repeat 0px 0px;
+}
+.watch .meta .rating {
+    float: right;
+    margin-right: 17px;
+    margin-top: 0px;
+}
+.watch .meta .download {
+    float: right;
+    padding-right: 20px;
+    background:url(../images/save.png) no-repeat 100% 0px;
+    margin-right: 27px;   
+}
+.watch .meta .download a{
+    text-decoration: none;
+    color: #666;
+}
+.watch .meta .views {
+    float: right;
+    padding-right: 20px;
+    background:url(../images/stats.png) no-repeat 100% 0px;
+}
+
+.watch .meta .favs {
+    float: right;
+    padding-right: 20px;
+    background:url(../images/heart.png) no-repeat 100% 0px;
+    margin-right: 32px;
+}
+
+.watch .meta .tags
+{
+    margin-top: 15px;
+    background:url(../images/tag.png) no-repeat 0px 0px;
+    padding-left: 20px;
+}
+.watch .meta .tags a {
+    text-decoration: none;
+}
+.entry-content .video img , .entry-content .meta img {
+    border: none;
+    box-shadow: none;
+}
+
+.wpby-box {
+    border: 1px solid #efefef;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.wpby-box h2 {
+    border-bottom: 1px solid #efefef;
+    margin: 0px 0px 10px 0px;
 }

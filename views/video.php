@@ -1,6 +1,8 @@
-<div class="wpby-video">
+<div class="wpby-header">
 <h2><?php echo $video['title']; ?></h2>
-<div class="watch">
+</div>
+<div class="wpby-video">
+    <div class="watch">
     <?php
     //var_dump($video);
     global $wpdb;
@@ -19,14 +21,19 @@
         <iframe width="600" height="355" frameborder="0" allowfullscreen="" src="http://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&amp;autoplay=1"></iframe>
 
         <?php echo $embed; ?>
+        <form id="df" method="POST" action="<?php echo site_url();?>/videos/" style="margin:0px; padding: 0px;">
+        <input type="hidden" name="url" value="http://www.youtube.com/watch?v=<?php echo $video['id'];?>">    
+        </form>
     </div>
     <div class="box meta">
 
         <div class="info">
             <span class="date">  Posted on  <?php echo date('jS M @ H:i', $video['published']); ?> </span>
             <span class="views">  <?php echo number_format($video['views']); ?> </span>
-            <span class="favs">  <?php echo number_format($video['favorites']); ?> </span>
-            <span class="download">  <?php echo '<a href="' . site_url() . '?url=' . urlencode('http://www.youtube.com/watch?v=' . $video['id']) . '">Download</a>'; ?> </span>
+         
+           
+            <span class="download"><a href="#"  onclick="jQuery('#df').submit();">  Download </a></span>
+             
             <span class="rating">  <?php echo stars($video['rating']); ?> </span>
         </div>
 
@@ -40,7 +47,10 @@
 </div>
 </div>
 
-<h2>Related Videos »</h2>
+<div class="wpby-header">
+<h2>Related Videos </h2>
+</div>
+
 <div class="wpby-list">
     <?php
         $i = 0;

@@ -145,7 +145,6 @@ class Youtube {
                 
             }
             
-           // var_dump($rvideo);
         }
 
         if ($canCache && count($rvideos) > 5) {
@@ -189,6 +188,7 @@ class Youtube {
             }
         }
 
+            
         return $rvideos;
     }
 
@@ -234,6 +234,19 @@ class Youtube {
 
     function embed($id, $width = '425', $height = '355', $autostart = false) {
         return '<iframe width="' . $width . '" height="' . $height . '" src="http://www.youtube.com/embed/' . $id . '?rel=0' . (($autostart) ? '&autoplay=1' : '') . '" frameborder="0" allowfullscreen></iframe>';
+    }
+    
+    function fetch($link) {
+
+        if (!(preg_match("/v=([a-zA-Z0-9\\_\\-]+)/", $link, $videoID)
+                || preg_match("/video_id=([a-zA-Z0-9\\_\\-]+)/", $link, $videoID)
+                || preg_match("/youtube\\.com\\/v\\/([a-zA-Z0-9\\_\\-]+)/", $link, $videoID))) {
+            return false;
+        }
+
+        $video = $this->video($videoID[1]);
+
+        return $video;
     }
 
 }

@@ -7,7 +7,9 @@ $wpbyContent = "";
 
 function wpbyDispatcher() {
 
-    global $pageTitle;
+    global $pageTitle,$wpdb;
+    
+    $table = $wpdb->prefix . "wpbase_youtube";
     
     if (is_page('videos')) {
 
@@ -16,28 +18,45 @@ function wpbyDispatcher() {
             global $yPath;
             include( dirname(__FILE__) . '/includes/youtube.php' );
             include( dirname(__FILE__) . '/includes/common.php' );
+            
+            $yt = new Youtube();
 
             $title = "";
             $content = "";
-            
+                        
             switch ($yPath[0]) {
 
                 case 'view':
 
-                    $yt = new Youtube();
+                    
                     $video = $yt->video($yPath[1]);
                     $keywords = str_replace(' ', '+', $video['title']);
                     $related = $yt->related($video['id']);                    
                     $content = wpbyView('video', array('video' => $video,'related'=>$related));
 
+                    //
+                    
+                    $playing = $wpdb->get_results("SELECT * FROM $table WHERE type_id=0 ORDER BY id desc LIMIT 10",ARRAY_A);
+                                        
+                    $found = false; 
+                    foreach ($playing as $cvideo) {
+                        if($cvideo['uid'] == $video['id']) {
+                            $found = true;
+                        }
+                    }
+                    
+                    if(!$found && !empty($video['title']) ) {
+                        $wpdb->insert($table,
+                                    array('uid'=>$video['id'],'title'=>$video['title'],'thumbnail'=>$video['thumbnail'],'views'=>$video['views'],'rating'=>$video['rating']),
+                                    array('%s','%s','%s','%s','%s')
+                                    );
+                    }
+                    
+                    
                     break;
 
                 case 'list':
-                    if (isset($_POST['url'])) {
-                        header('Location: ' . site_url('videos/' . $_POST['url'] . ''));
-                        break;
-                    }
-                    $yt = new Youtube();
+                    
 
                     $sort = 'relevance';
                     $page = 1;
@@ -56,8 +75,7 @@ function wpbyDispatcher() {
                     }
                     
                     if(empty ($keywords)) {
-                        
-                        $content = wpbyView('home', array(''));
+                       
                         
                     } else {
                     
@@ -71,6 +89,51 @@ function wpbyDispatcher() {
                     break;
 
 
+                case 'home' :
+                        global $wpdb;
+                    
+                        if(isset($_POST['url'])) {
+                            if(strstr($_POST['url'],'http')) {
+                                // download
+                                // get id 
+                                $video = $yt->fetch($_POST['url']);
+                                
+                                if(!empty($video['title'])) {
+                                    
+                                    $playing = $wpdb->get_results("SELECT * FROM $table WHERE type_id=1 ORDER BY id desc LIMIT 10",ARRAY_A);
+                                        
+                                    $found = false; 
+                                    foreach ($playing as $cvideo) {
+                                        if($cvideo['uid'] == $video['id']) {
+                                            $found = true;
+                                        }
+                                    }
+
+                                    if(!$found && !empty($video['title']) ) {
+                                        $wpdb->insert($table,
+                                                    array('uid'=>$video['id'],'title'=>$video['title'],'thumbnail'=>$video['thumbnail'],'views'=>$video['views'],'rating'=>$video['rating'],'type_id'=>'1'),
+                                                    array('%s','%s','%s','%s','%s','%d')
+                                                    );
+                                    }
+                                    
+                                    
+                                }
+                                
+                                
+                                
+                            } else {
+                                header('Location: ' . site_url('videos/' . $_POST['url'] . ''));
+                                break;
+                            }
+                        }
+                    
+                                                                       
+                        $playing = $wpdb->get_results("SELECT * FROM $table WHERE type_id=0 ORDER BY id desc LIMIT 10",ARRAY_A);
+                        $downloaded = $wpdb->get_results("SELECT * FROM $table WHERE type_id=1 ORDER BY id desc LIMIT 10",ARRAY_A);
+                        $content = wpbyView('home', array('playing'=>$playing,'downloaded'=>$downloaded));
+                        
+                    break;
+                    
                 default: {
                         $replace = "";
                         //include_once('page-home.php');
