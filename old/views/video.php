@@ -1,4 +1,3 @@
-<div class="wpby-video">
 <h2><?php echo $video['title']; ?></h2>
 <div class="watch">
     <?php
@@ -38,22 +37,31 @@
 
     </div>
 </div>
-</div>
 
 <h2>Related Videos »</h2>
-<div class="wpby-list">
+<div class="tags">
     <?php
-        $i = 0;
-        foreach ($related as $video) { 
-            $i++;
-            if($i > 9) break;
-            ?>
+    $k = 0;
+    $tagURLs = array();
+    $yt = new Youtube();
+    foreach ($video['tags'] as $tag) {
 
+
+        $videos = $yt->videos($tag, "relevance");
+        //var_dump($videos);
+
+        $j = 0;             // used to show just one related video for each tag
+        foreach ($videos as $video) {
+            $j++;
+            ?>
             <div class = "video">
                 <div class="thumb">
 
                     <a class="rotate" href="<?php echo site_url('video/' . $video['id'] . '/' . str_replace(array('"', "'", '/'), '-', $video['title'])); ?>">
-                        <span><img src="<?php echo $video['thumbnail']; ?>0.jpg"></span>
+                        <span>
+                            <img src="<?php echo $video['thumbnail']; ?>0.jpg">
+                        </span>
+
                     </a>
 
                     <?php echo stars($video['rating'], 's'); ?>
@@ -61,13 +69,20 @@
                 </div>
                 <h3><?php echo $video['title']; ?></h3>            
             </div>  <!-- Video div  --> <?php
-         }
+            if ($j == 1)
+                break;
+        }
+
+
+
+
+        $k++;
+        if ($k > 4)         //No of related videos to be showen
+            break;
+    }
             ?>
 </div>
-
+<?php
+//echo View::quickRender('videos', array('videos' => $related, 'max' => 6));
+?>
             
-<style type="text/css">
-    .entry-header {
-        display: none;
-    }
-</style>

@@ -1,53 +1,25 @@
 <?php
-/*
-    "WordPress Plugin Template" Copyright (C) 2013 Michael Simpson  (email : michael.d.simpson@gmail.com)
 
-    This file is part of WordPress Plugin Template for WordPress.
+// Basic activation and deactivation 
 
-    WordPress Plugin Template is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    WordPress Plugin Template is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Contact Form to Database Extension.
-    If not, see http://www.gnu.org/licenses/gpl-3.0.html
-*/
-
-function Wpbase_youtube_init($file) {
-
-    require_once('Wpbase_youtube_Plugin.php');
-    $aPlugin = new Wpbase_youtube_Plugin();
-
-    // Install the plugin
-    // NOTE: this file gets run each time you *activate* the plugin.
-    // So in WP when you "install" the plugin, all that does it dump its files in the plugin-templates directory
-    // but it does not call any of its code.
-    // So here, the plugin tracks whether or not it has run its install operation, and we ensure it is run only once
-    // on the first activation
-    if (!$aPlugin->isInstalled()) {
-        $aPlugin->install();
-    }
-    else {
-        // Perform any version-upgrade activities prior to activation (e.g. database changes)
-        $aPlugin->upgrade();
-    }
-
-    // Add callbacks to hooks
-    $aPlugin->addActionsAndFilters();
-
-    if (!$file) {
-        $file = __FILE__;
-    }
-    // Register the Plugin Activation Hook
-    register_activation_hook($file, array(&$aPlugin, 'activate'));
+function wpbyActivation() {
+    
+    // install database     
+}
 
 
-    // Register the Plugin Deactivation Hook
-    register_deactivation_hook($file, array(&$aPlugin, 'deactivate'));
+function wpbyDeactivation() {
+    
+    //remove database     
+}
+
+function wpbyMedia() {
+    wp_enqueue_script('jquery');
+
+    wp_register_script('wpby_script', plugins_url('media/js/script.js', __FILE__),array("jquery"));
+    wp_enqueue_script('wpby_script');
+
+    wp_register_style('wpby_style', plugins_url('media/css/style.css', __FILE__));
+    wp_enqueue_style('wpby_style');
+
 }
