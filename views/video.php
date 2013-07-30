@@ -32,7 +32,7 @@
             <span class="views">  <?php echo number_format($video['views']); ?> </span>
          
            
-            <span class="download"><a href="#"  onclick="jQuery('#df').submit();">  Download </a></span>
+            <span class="download"><a href="#"  onclick="jQuery('#df').submit();return false;">  Download </a></span>
              
             <span class="rating">  <?php echo stars($video['rating']); ?> </span>
         </div>

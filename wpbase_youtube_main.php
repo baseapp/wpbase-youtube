@@ -92,6 +92,8 @@ function wpbyDispatcher() {
                 case 'home' :
                         global $wpdb;
                     
+                        $data = array();
+                    
                         if(isset($_POST['url'])) {
                             if(strstr($_POST['url'],'http')) {
                                 // download
@@ -99,6 +101,8 @@ function wpbyDispatcher() {
                                 $video = $yt->fetch($_POST['url']);
                                 
                                 if(!empty($video['title'])) {
+                                    
+                                    $data['url'] = $_POST['url'];
                                     
                                     $playing = $wpdb->get_results("SELECT * FROM $table WHERE type_id=1 ORDER BY id desc LIMIT 10",ARRAY_A);
                                         
@@ -128,9 +132,9 @@ function wpbyDispatcher() {
                         }
                     
                                                                        
-                        $playing = $wpdb->get_results("SELECT * FROM $table WHERE type_id=0 ORDER BY id desc LIMIT 10",ARRAY_A);
-                        $downloaded = $wpdb->get_results("SELECT * FROM $table WHERE type_id=1 ORDER BY id desc LIMIT 10",ARRAY_A);
-                        $content = wpbyView('home', array('playing'=>$playing,'downloaded'=>$downloaded));
+                        $data['playing'] = $wpdb->get_results("SELECT * FROM $table WHERE type_id=0 ORDER BY id desc LIMIT 10",ARRAY_A);
+                        $data['downloaded'] = $wpdb->get_results("SELECT * FROM $table WHERE type_id=1 ORDER BY id desc LIMIT 10",ARRAY_A);
+                        $content = wpbyView('home', $data);
                         
                     break;
                     

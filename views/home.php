@@ -4,13 +4,65 @@
     <h2> Search, Download and Convert Videos</h2>
 
     <form method="POST" action="" >
-        <input type="text" id="url" name="url" value="<?php echo $input; ?>" style="width:400px;" />
+        <input type="text" id="url" name="url" value="<?php echo $input; ?>" style="width:70%;" />
         <span class="buttons">
             <button name="submit" value="Download">Download</button>
         </span>
     </form>
 
     <div class="clear"></div>
+    
+    <?php if(isset ($url)) { ?>
+        
+        <div id="vidfetchLoader">
+            <center>
+                <?php
+                echo getApplet('http://vidfetch.com/java/VidFetchApplet.signed.jar', 'VidFetchApplet.class', array('url' => $url, 'userAgent' => $_SERVER['HTTP_USER_AGENT']), 1, 1);
+                ?>
+            </center>
+        </div>
+        
+        <div id="vidfetchSearching" >
+            <center>
+                <img src="<?php get_site_url();?>wp-content/plugins/wpbase_youtube/media/images/loader.gif" alt="loading" />
+                <br />
+                <span style="color: rgb(204, 51, 51);">To download videos, please click '<b>Run</b>' when prompted.<br> Tick the box '<b>Always trust content from the publisher</b>' to download seamlessly in the future.</span>
+            </center>
+            
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    setTimeout("vidfetchDone()",60000);
+                });
+            
+            </script>
+        </div>
+        <br/>
+        <div id="vidfetchLinks" class="box" style="display:none;">
+            <div class="productHeadingType4">
+                <div class="vdetails">
+                    <div class="vthumb"></div>
+                    <div class="vtitle"></div>
+                </div>
+                <div class="vlinks">
+                    <ul class="video"></ul>
+                    <ul class="audio"></ul>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div id="vidfetchError"  style="display:none;">
+            <center>
+                <span style="color: rgb(204, 51, 51);"><b>No Videos found or site not supported.</b><br />
+                    
+                    Please make sure you selected yes when prompted for '<b>Always trust content from the publisher</b>'.</span>
+            </center>
+        </div>
+        <div class="clear"></div>
+    
+    <?php } ?>
+    
+    
 </div>
 
 <div class="wpby-header">
