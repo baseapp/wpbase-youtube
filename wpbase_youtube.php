@@ -48,8 +48,12 @@ register_uninstall_hook(__FILE__,'wpbyUninstall');
 register_activation_hook(__FILE__, 'wpbyActivation');
 register_deactivation_hook(__FILE__, 'wpbyDeactivation');
 
+// Shortcodes 
+
+add_shortcode('wpbase-youtube', 'wpbyContent');
+
 // All filters 
-add_filter('the_content', 'wpbyContent',19);
+//add_filter('the_content', 'wpbyContent',19);
 //add_filter('the_title', 'wpbyTitle',20);
 add_filter('wp_title', 'wpbyPTitle',21,2);
         

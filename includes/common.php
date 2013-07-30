@@ -32,7 +32,7 @@ function getApplet($jarFile, $className, $params = array(), $width=1, $height=1,
         $retVal = sprintf('<applet name="%s" id="%s" archive="%s" code="%s" width="%s" height="%s" MAYSCRIPT >', $name, $name, $jarFile, $className, $width, $height);
     } else {
         if (strstr($user_agent, "MSIE")) {
-            $retVal = sprintf('<object  name="%s" id="%s" classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" style="border-width:0;" codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1"  width= "%s" height= "%s">', $name, $name, $width, $height);
+            $retVal = sprintf('<object  name="%s" id="%s" classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" style="border-width:0;" codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1"  width= "%spx" height= "%spx">', $name, $name, $width, $height);
         } else {
             $retVal = sprintf('<object  name="%s" id="%s" type="application/x-java-applet;version=1.4.1" width= "%s" height= "%s">', $name, $name, $width, $height);
         }

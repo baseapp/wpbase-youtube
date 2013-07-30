@@ -151,12 +151,8 @@ function wpbyDispatcher() {
 }
 
 function wpbyContent($content) {
-
-    if (strstr($content, '[wpbase-youtube]')) {
-            global $wpbyContent;
-            $content = str_replace('[wpbase-youtube]', $wpbyContent, $content);        
-    }
-    return $content;
+    global $wpbyContent;
+    return $wpbyContent;
 }
 
 function wpbyTitle($title) {

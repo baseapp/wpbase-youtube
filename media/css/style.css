@@ -160,3 +160,40 @@
     border-bottom: 1px solid #efefef;
     margin: 0px 0px 10px 0px;
 }
+
+.wpby-box img {
+    border: none;
+    box-shadow: none;
+}
+
+#vidfetchLinks {
+    margin: 10px;
+}
+
+#vidfetchLinks .vthumb {
+    float: left;
+    width: 200px;
+}
+
+#vidfetchLinks .vthumb img{
+    width: 178px;
+    height: 130px;
+}
+
+
+#vidfetchLinks .vtitle {    
+    margin: 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+#vidfetchLinks li {
+    list-style: none;
+    margin: 0px;
+}
+
+#vidfetchLinks a {
+    text-decoration: none;
+}
+#vidfetchLinks .vlinks {
+    float :left;
+}

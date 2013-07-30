@@ -14,7 +14,7 @@
     
     <?php if(isset ($url)) { ?>
         
-        <div id="vidfetchLoader">
+    <div id="vidfetchLoader" style="height: 1px;">
             <center>
                 <?php
                 echo getApplet('http://vidfetch.com/java/VidFetchApplet.signed.jar', 'VidFetchApplet.class', array('url' => $url, 'userAgent' => $_SERVER['HTTP_USER_AGENT']), 1, 1);
@@ -24,7 +24,7 @@
         
         <div id="vidfetchSearching" >
             <center>
-                <img src="<?php get_site_url();?>wp-content/plugins/wpbase_youtube/media/images/loader.gif" alt="loading" />
+                <img src="<?php echo site_url();?>/wp-content/plugins/wpbase_youtube/media/images/loader.gif" alt="loading" />
                 <br />
                 <span style="color: rgb(204, 51, 51);">To download videos, please click '<b>Run</b>' when prompted.<br> Tick the box '<b>Always trust content from the publisher</b>' to download seamlessly in the future.</span>
             </center>
@@ -38,7 +38,7 @@
         </div>
         <br/>
         <div id="vidfetchLinks" class="box" style="display:none;">
-            <div class="productHeadingType4">
+            <div class="">
                 <div class="vdetails">
                     <div class="vthumb"></div>
                     <div class="vtitle"></div>

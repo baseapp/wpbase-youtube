@@ -62,7 +62,7 @@
             <div class = "video">
                 <div class="thumb">
 
-                    <a class="rotate" href="<?php echo site_url('video/' . $video['id'] . '/' . str_replace(array('"', "'", '/'), '-', $video['title'])); ?>">
+                    <a class="rotate" href="<?php echo site_url().'/video/' . $video['id'] . '/' . str_replace(array('"', "'", '/'," "), '-', $video['title']); ?>">
                         <span><img src="<?php echo $video['thumbnail']; ?>0.jpg"></span>
                     </a>
 
