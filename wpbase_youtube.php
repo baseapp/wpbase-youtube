@@ -9,7 +9,9 @@ License: GPLv2 or later
 */
 
 
-
+if(is_admin()) {
+    include('wpbase_youtube_admin.php');
+}
 include ('wpbase_youtube_init.php');
 include ('wpbase_youtube_main.php');
 
@@ -43,6 +45,8 @@ function wpbyURLHandler(&$wp) {
     }
 }
 
+
+                
 // All the hooks 
 register_uninstall_hook(__FILE__,'wpbyUninstall');
 register_activation_hook(__FILE__, 'wpbyActivation');
@@ -59,6 +63,11 @@ add_filter('wp_title', 'wpbyPTitle',21,2);
         
 // All Actions
 
-add_action('parse_request', 'wpbyURLHandler');
-add_action('wp_enqueue_scripts', 'wpbyMedia',20);
-add_action('wp', 'wpbyDispatcher');
+if(is_admin()) {
+    add_action('admin_menu', 'wpbyOptionsMenu');  
+    add_action( 'admin_init', 'wpbySettings' );
+} else {
+    add_action('parse_request', 'wpbyURLHandler');
+    add_action('wp_enqueue_scripts', 'wpbyMedia',20);
+    add_action('wp', 'wpbyDispatcher');
+}

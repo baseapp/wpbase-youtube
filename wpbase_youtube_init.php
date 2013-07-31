@@ -44,3 +44,21 @@ function wpbyMedia() {
     wp_enqueue_style('wpby_style');
 
 }
+
+function wpbyView($view, $vars) {
+
+    $viewsDir = dirname(__FILE__) . '/views/';
+    $viewPath = dirname(__FILE__) . '/views/' . $view . '.php';
+    if (!is_file($viewPath)) {
+        throw new Exception('View not found');
+    }
+
+    extract($vars);
+    ob_start();
+
+    include $viewPath;
+    $retVal = ob_get_contents();
+    ob_end_clean();
+
+    return $retVal;
+}

@@ -88,13 +88,19 @@ class Youtube {
 
     function videos($keywords, $orderby, $results = 10, $page = 1) {
 
+        $apiPlus = "";
+        $apikey = get_option('wpby_apikey');
+        if(empty($apikey)) {
+            $apiPlus = '&apikey='.$apikey;
+        }
+        
         $orderByVocabulary = array('relevance' => 'relevance', 'latest' => 'published', 'popular' => 'viewCount', 'top' => 'rating');
 
         $start_index = (($page - 1) * $results) + 1;
 
         $urlorderby = empty($orderby) ? '' : '&orderby=' . $orderByVocabulary[$orderby];
 
-        $feedURL = "http://gdata.youtube.com/feeds/api/videos?vq=$keywords$urlorderby&start-index=$start_index&max-results=$results&format=5&alt=rss";
+        $feedURL = "http://gdata.youtube.com/feeds/api/videos?vq=$keywords$urlorderby&start-index=$start_index&max-results=$results&format=5&alt=rss".$apiPlus;
 
         $checkWords = explode(',', B_SITE_CATEGORIES);
 
@@ -155,7 +161,14 @@ class Youtube {
     }
 
     function related($id) {
-        $feedURL = 'http://gdata.youtube.com/feeds/api/videos/' . $id . '/related?format=5&alt=rss&max-results=10';
+        
+        $apiPlus = "";
+        $apikey = get_option('wpby_apikey');
+        if(empty($apikey)) {
+            $apiPlus = '&apikey='.$apikey;
+        }
+        
+        $feedURL = 'http://gdata.youtube.com/feeds/api/videos/' . $id . '/related?format=5&alt=rss&max-results=10'.$apiPlus;
 
         $fetch = wp_remote_get($feedURL);
         $feed = $fetch['body'];
@@ -193,7 +206,14 @@ class Youtube {
     }
 
     function video($id) {
-        $feedURL = "http://gdata.youtube.com/feeds/api/videos/$id";
+        
+        $apiPlus = "";
+        $apikey = get_option('wpby_apikey');
+        if(empty($apikey)) {
+            $apiPlus = '?apikey='.$apikey;
+        }
+        
+        $feedURL = "http://gdata.youtube.com/feeds/api/videos/$id".$apiPlus;
 
 
         $fetch = wp_remote_get($feedURL);

@@ -1,12 +1,12 @@
 
 <!-- Search Code -->
 <div class="wpby-box">
-    <h2> Search, Download and Convert Videos</h2>
+    <h2><?php _e('Search, Download and Convert Videos');?></h2>
 
     <form method="POST" action="" >
         <input type="text" id="url" name="url" value="<?php echo $input; ?>" style="width:70%;" />
         <span class="buttons">
-            <button name="submit" value="Download">Download</button>
+            <button name="submit" value="Download"><?php _e('Download');?></button>
         </span>
     </form>
 
@@ -26,7 +26,7 @@
             <center>
                 <img src="<?php echo site_url();?>/wp-content/plugins/wpbase_youtube/media/images/loader.gif" alt="loading" />
                 <br />
-                <span style="color: rgb(204, 51, 51);">To download videos, please click '<b>Run</b>' when prompted.<br> Tick the box '<b>Always trust content from the publisher</b>' to download seamlessly in the future.</span>
+                <span style="color: rgb(204, 51, 51);"><?php _e('To download videos, please click \'<b>Run</b>\' when prompted.<br> Tick the box \'<b>Always trust content from the publisher</b>\' to download seamlessly in the future.'); ?></span>
             </center>
             
             <script type="text/javascript">
@@ -53,9 +53,9 @@
         
         <div id="vidfetchError"  style="display:none;">
             <center>
-                <span style="color: rgb(204, 51, 51);"><b>No Videos found or site not supported.</b><br />
+                <span style="color: rgb(204, 51, 51);"><b><?php _e('No Videos found or site not supported.');?> </b><br />
                     
-                    Please make sure you selected yes when prompted for '<b>Always trust content from the publisher</b>'.</span>
+                    <?php _e('Please make sure you selected yes when prompted for \'<b>Always trust content from the publisher</b>\'.');?> </span>
             </center>
         </div>
         <div class="clear"></div>

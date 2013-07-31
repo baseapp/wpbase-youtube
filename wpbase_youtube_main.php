@@ -30,11 +30,10 @@ function wpbyDispatcher() {
 
                     
                     $video = $yt->video($yPath[1]);
+                    $title = $video['title'];
                     $keywords = str_replace(' ', '+', $video['title']);
                     $related = $yt->related($video['id']);                    
                     $content = wpbyView('video', array('video' => $video,'related'=>$related));
-
-                    //
                     
                     $playing = $wpdb->get_results("SELECT * FROM $table WHERE type_id=0 ORDER BY id desc LIMIT 10",ARRAY_A);
                                         
@@ -79,7 +78,7 @@ function wpbyDispatcher() {
                         
                     } else {
                     
-                        $title = '"'.urldecode($keywords).'" Videos';
+                        $title = '"'.urldecode($keywords).'" '.__('Videos');
 
                         $keywords = str_replace(' ', '+', $keywords);
                         $videos = $yt->videos($keywords, $sort, 15, $page);
@@ -160,7 +159,7 @@ function wpbyTitle($title) {
     if (is_page('videos'))
         if ($title == 'videos' || $title == 'Videos') {
             global $wpbyTitle;
-            $title = $wpbyTitle;
+            $title = $wpbyTitle.' | '.get_bloginfo('name');
         }
     return $title;
 }
@@ -170,25 +169,8 @@ function wpbyPTitle($title) {
     global $wpbyTitle;
     
     if(!empty ($wpbyTitle)) {
-        $title = $wpbyTitle;
+        $title = $wpbyTitle.' | '.get_bloginfo('name');
     }
     return $title;
 }
 
-function wpbyView($view, $vars) {
-
-    $viewsDir = dirname(__FILE__) . '/views/';
-    $viewPath = dirname(__FILE__) . '/views/' . $view . '.php';
-    if (!is_file($viewPath)) {
-        throw new Exception('View not found');
-    }
-
-    extract($vars);
-    ob_start();
-
-    include $viewPath;
-    $retVal = ob_get_contents();
-    ob_end_clean();
-
-    return $retVal;
-}
