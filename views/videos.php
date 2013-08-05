@@ -13,8 +13,8 @@
             } else {
                 ?> 
                 <a title="<?php echo $var; ?>" href="<?php echo site_url(); ?>/videos/sort<?php echo $var . '/' . $keywords; ?>"><span><?php echo $val; ?></span></a> <?php
-    }
-}
+            }
+        }
         ?>
     </div>
 </div>
@@ -31,7 +31,6 @@
             <?php //var_dump($video);   ?>
             <div class = "video">
                 <div class="thumb">
-
                     <a class="rotate" href="<?php echo site_url().'/video/' . $video['id'] . '/' . str_replace(array('"', "'", '/'," "), '-', $video['title']); ?>">
                         <span>
                             <img src="<?php echo $video['thumbnail']; ?>0.jpg">

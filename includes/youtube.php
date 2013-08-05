@@ -1,5 +1,7 @@
 <?php
 
+if(class_exists('Youtube')) return;
+
 class Youtube {
 
     var $skip = array('name', 'very', 'through', 'just', 'form', 'sentence', 'great', 'think', 'that'
@@ -90,7 +92,7 @@ class Youtube {
 
         $apiPlus = "";
         $apikey = get_option('wpby_apikey');
-        if(empty($apikey)) {
+        if(!empty($apikey)) {
             $apiPlus = '&apikey='.$apikey;
         }
         
@@ -160,11 +162,65 @@ class Youtube {
         return $rvideos;
     }
 
+    function fetchFeed($feedURL) {
+        
+        $apiPlus = "";
+        $apikey = get_option('wpby_apikey');
+        if(!empty($apikey)) {
+            $apiPlus = '&apikey='.$apikey;
+        }
+        
+        if(!empty ($apikey)) {
+            if(strstr($feedURL,'?')) {
+                $feedURL .= '&apikey='.$apikey;
+            } else {
+                $feedURL .= '?apikey='.$apikey;
+            }
+        }
+             
+        $fetch = wp_remote_get($feedURL);
+        $feed = $fetch['body'];
+        
+        $rvideos = array();
+
+        if (preg_match('%<openSearch:totalResults>([0-9]+)</openSearch:totalResults>%s', $feed, $count)) {
+            preg_match_all('%y><title>(.[^<]*?)</title><l%s', $feed, $titles);
+            preg_match_all('%<yt:duration seconds=\'([0-9]+)\'/>%s', $feed, $durations);
+            preg_match_all('%<description>(.*?)</description>%s', $feed, $descs);
+            preg_match_all('%<media:keywords>(.*?)</media:keywords>%sm', $feed, $keywords);
+            preg_match_all('/<media:thumbnail url=\'(.[^\']*?)1\.jpg\'/s', $feed, $thumbnails);
+            preg_match_all('%<link>http://www\.youtube\.com/watch\?v=(.[^&]*?)&%s', $feed, $ids);
+            preg_match_all('/viewCount=\'([0-9]+)\'/', $feed, $views);
+            preg_match_all('/rating average=\'([0-9.]+)\'/', $feed, $ratings);
+
+            
+            for ($i = 0; $i < count($titles[1]); $i++) {
+
+                $video['count'] = $count[1];
+                $video['views'] = isset($views[1][$i]) ? $views[1][$i] : rand(10, 30);
+                $video['title'] = $titles[1][$i];
+                $video['duration'] = $durations[1][$i];
+                //$video['description'] = $descs[1][$i];
+                $video['tags'] = $this->_makeTags($titles[1][$i]);
+                $video['thumbnail'] = $thumbnails[1][$i];
+                $video['id'] = $ids[1][$i];
+                $video['rating'] = isset($ratings[1][$i]) ? $ratings[1][$i] : 0;
+                $rvideos[] = $video;
+            }
+        }
+        
+        
+        
+
+            
+        return $rvideos;      
+        
+    }
     function related($id) {
         
         $apiPlus = "";
         $apikey = get_option('wpby_apikey');
-        if(empty($apikey)) {
+        if(!empty($apikey)) {
             $apiPlus = '&apikey='.$apikey;
         }
         
@@ -172,6 +228,8 @@ class Youtube {
 
         $fetch = wp_remote_get($feedURL);
         $feed = $fetch['body'];
+        
+        
 
         //echo $feed;
         $rvideos = array();
@@ -209,7 +267,7 @@ class Youtube {
         
         $apiPlus = "";
         $apikey = get_option('wpby_apikey');
-        if(empty($apikey)) {
+        if(!empty($apikey)) {
             $apiPlus = '?apikey='.$apikey;
         }
         

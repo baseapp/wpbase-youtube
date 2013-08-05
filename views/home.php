@@ -12,7 +12,13 @@
 
     <div class="clear"></div>
     
-    <?php if(isset ($url)) { ?>
+    <?php if(isset ($url)) { 
+    
+        if(is_user_logged_in()) {
+        
+    ?>
+    
+   
         
     <div id="vidfetchLoader" style="height: 1px;">
             <center>
@@ -24,7 +30,7 @@
         
         <div id="vidfetchSearching" >
             <center>
-                <img src="<?php echo site_url();?>/wp-content/plugins/wpbase_youtube/media/images/loader.gif" alt="loading" />
+                <img src="<?php echo site_url();?>/wp-content/plugins/wpbase-youtube/media/images/loader.gif" alt="loading" />
                 <br />
                 <span style="color: rgb(204, 51, 51);"><?php _e('To download videos, please click \'<b>Run</b>\' when prompted.<br> Tick the box \'<b>Always trust content from the publisher</b>\' to download seamlessly in the future.'); ?></span>
             </center>
@@ -60,13 +66,21 @@
         </div>
         <div class="clear"></div>
     
-    <?php } ?>
+    <?php } else {?> 
+        <div id="vidfetchError">
+            <center>
+                <span style="color: rgb(204, 51, 51);"><b><?php _e('Only logged in users can download videos.');?> </b><br />                
+            </center>
+        </div>
+    <?php }    
+    }
+?>
     
     
 </div>
 
 <div class="wpby-header">
-    <h2>Latest Downloads</h2>    
+    <h2><?php _e('Latest Downloads');?></h2>    
 </div>
 <div class="wpby-list">
     <?php
@@ -79,7 +93,7 @@
             <div class = "video">
                 <div class="thumb">
 
-                    <a class="rotate" href="<?php echo site_url('video/' . $video['uid'] . '/' . str_replace(array('"', "'", '/'), '-', $video['title'])); ?>">
+                    <a class="rotate" href="<?php echo site_url('video/' . $video['uid'] . '/' . str_replace(array('"', "'", '/'," "), '-', $video['title'])); ?>">
                         <span><img src="<?php echo $video['thumbnail']; ?>0.jpg"></span>
                     </a>
 
@@ -94,7 +108,7 @@
 </div>
 
 <div class="wpby-header">
-    <h2>Now Playing</h2>    
+    <h2><?php _e('Now Playing');?></h2>    
 </div>
 <div class="wpby-list">
     <?php
@@ -107,7 +121,7 @@
             <div class = "video">
                 <div class="thumb">
 
-                    <a class="rotate" href="<?php echo site_url('video/' . $video['uid'] . '/' . str_replace(array('"', "'", '/'), '-', $video['title'])); ?>">
+                    <a class="rotate" href="<?php echo site_url('video/' . $video['uid'] . '/' . str_replace(array('"', "'", '/'," "), '-', $video['title']) ); ?>">
                         <span><img src="<?php echo $video['thumbnail']; ?>0.jpg"></span>
                     </a>
 

@@ -15,7 +15,7 @@ function stars($rating, $prefix = '') {
         } else {
             $star = "g";
         }
-        $retval .= '<img src="' . site_url() . '/wp-content/plugins/wpbase_youtube/media/images/' . $prefix . 'star' . $star . '.png">';
+        $retval .= '<img src="' . site_url() . '/wp-content/plugins/wpbase-youtube/media/images/' . $prefix . 'star' . $star . '.png">';
     }
 
     return '<div class="rating">' . $retval . '</div>';
@@ -72,4 +72,22 @@ function truncate($string, $length = 80, $etc = '...', $break_words = true)
 		return substr($string, 0, $length).$etc;
 	} else
 	return $string;
+}
+
+function minutes($secs)
+{
+	if ($secs<0) return false;
+
+	$m = (int)($secs / 60);
+	$s = $secs % 60;
+	$h = (int)($m / 60);
+	$m = $m % 60;
+
+	$text = "";
+	if ($h > 0)
+	$text = $h.":";
+
+	if (strlen($s)==1)
+	$s = "0".$s;
+	return $text.$m.":".$s;
 }

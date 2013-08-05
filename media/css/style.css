@@ -166,6 +166,28 @@
     box-shadow: none;
 }
 
+.wpby-widget li{
+    float:left;
+    margin-right: 2px;
+    position: relative;
+}
+
+.wpby-widget li a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.wpby-widget li .duration {
+    position: absolute;
+    top :70px;
+    left:80px;
+    background: #000;
+    line-height: 10px;
+    padding: 3px;     
+}
+
+
 #vidfetchLinks {
     margin: 10px;
 }
