@@ -28,11 +28,19 @@
     <div class="box meta">
 
         <div class="info">
+<<<<<<< HEAD
             <span class="date">  <?php _e('Posted on','wpbase');?>  <?php echo date('jS M @ H:i', $video['published']); ?> </span>
             <span class="views">  <?php echo number_format($video['views']); ?> </span>
          
            
             <span class="download"><a href="#"  onclick="jQuery('#df').submit();return false;">  <?php _e('Download','wpbase');?> </a></span>
+=======
+            <span class="date">  <?php _e('Posted on');?>  <?php echo date('jS M @ H:i', $video['published']); ?> </span>
+            <span class="views">  <?php echo number_format($video['views']); ?> </span>
+         
+           
+            <span class="download"><a href="#"  onclick="jQuery('#df').submit();return false;">  <?php _e('Download');?> </a></span>
+>>>>>>> origin/master
              
             <span class="rating">  <?php echo stars($video['rating']); ?> </span>
         </div>
@@ -48,7 +56,11 @@
 </div>
 
 <div class="wpby-header">
+<<<<<<< HEAD
 <h2> <?php _e('Related Videos','wpbase');?> </h2>
+=======
+<h2> <?php _e('Related Videos');?> </h2>
+>>>>>>> origin/master
 </div>
 
 <div class="wpby-list">

@@ -72,12 +72,20 @@ class WPBYWidget extends WP_Widget {
 		}
 		?>
 		<p>
+<<<<<<< HEAD
 		<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ,'wpbase'); ?></label> 
+=======
+		<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+>>>>>>> origin/master
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 
                 <p>
+<<<<<<< HEAD
 		<label for="<?php echo $this->get_field_name( 'count' ); ?>"><?php _e( 'Number of videos to show:' ,'wpbase'); ?></label> 
+=======
+		<label for="<?php echo $this->get_field_name( 'count' ); ?>"><?php _e( 'Number of videos to show:' ); ?></label> 
+>>>>>>> origin/master
 		<input size="3" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="text" value="<?php echo esc_attr( $count ); ?>" />
 		</p>
 		<?php 
