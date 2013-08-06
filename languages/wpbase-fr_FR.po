@@ -1,0 +1,207 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: counterize\n"
+"POT-Creation-Date: 2013-08-06 14:49+0530\n"
+"PO-Revision-Date: 2013-08-06 15:06+0530\n"
+"Last-Translator: \n"
+"Language-Team: Baseapp <vikrant@baseapp.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: D:/wamp/www/wordpress/wp-content/plugins/wpbase_youtube\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Language: French\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wpbase-widget.php:12
+msgid "Youtube Popular Videos Widget"
+msgstr "Youtube Videos Populaire Widget"
+
+#: wpbase-widget.php:70
+msgid "Latest Videos"
+msgstr "dernières vidéos"
+
+#: wpbase-widget.php:75
+msgid "Title:"
+msgstr "Titre:"
+
+#: wpbase-widget.php:80
+msgid "Number of videos to show:"
+msgstr "Nombre de vidéos pour montrer:"
+
+#: wpbase-youtube-main.php:80 wpbase_youtube_main.php:81
+msgid "Videos"
+msgstr "vidéos"
+
+#: old/wpbase_youtube.php:140
+msgid ""
+"Error: plugin \"wpbase-youtube\" requires a newer version of PHP to be "
+"running."
+msgstr ""
+"Erreur: plugin  \"wpbase-youtube \" nécessite une version plus récente de "
+"PHP doit être en cours d'exécution."
+
+#: old/wpbase_youtube.php:141
+msgid "Minimal version of PHP required: "
+msgstr "Version minimale de PHP requise:"
+
+#: old/wpbase_youtube.php:142
+msgid "Your server's PHP version: "
+msgstr "La version PHP de votre serveur:"
+
+#: old/Wpbase_youtube_OptionsManager.php:266
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
+
+#: old/Wpbase_youtube_OptionsManager.php:284
+msgid "System Settings"
+msgstr "Paramètres système"
+
+#: old/Wpbase_youtube_OptionsManager.php:286
+msgid "System"
+msgstr "système"
+
+#: old/Wpbase_youtube_OptionsManager.php:287
+msgid "PHP Version"
+msgstr "Version de PHP"
+
+#: old/Wpbase_youtube_OptionsManager.php:292
+msgid ""
+"(WARNING: This plugin may not work properly with versions earlier than PHP "
+"5.2)"
+msgstr ""
+"(ATTENTION: Ce plugin ne fonctionne pas correctement avec les versions "
+"antérieures à PHP 5.2)"
+
+#: old/Wpbase_youtube_OptionsManager.php:298
+msgid "MySQL Version"
+msgstr "MySQL Version"
+
+#: old/Wpbase_youtube_OptionsManager.php:303
+msgid ""
+"(WARNING: This plugin may not work properly with versions earlier than MySQL "
+"5.0)"
+msgstr ""
+"(ATTENTION: Ce plugin ne fonctionne pas correctement avec les versions "
+"antérieures de MySQL 5.0)"
+
+#: old/Wpbase_youtube_OptionsManager.php:311
+msgid "Settings"
+msgstr "réglages"
+
+#: old/Wpbase_youtube_OptionsManager.php:334
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: old/Wpbase_youtube_OptionsManager.php:392
+msgid "true"
+msgstr "vrai"
+
+#: old/Wpbase_youtube_OptionsManager.php:394
+msgid "false"
+msgstr "faux"
+
+#: old/Wpbase_youtube_OptionsManager.php:397
+msgid "Administrator"
+msgstr "administrateur"
+
+#: old/Wpbase_youtube_OptionsManager.php:399
+msgid "Editor"
+msgstr "éditeur"
+
+#: old/Wpbase_youtube_OptionsManager.php:401
+msgid "Author"
+msgstr "auteur"
+
+#: old/Wpbase_youtube_OptionsManager.php:403
+msgid "Contributor"
+msgstr "Contributeur"
+
+#: old/Wpbase_youtube_OptionsManager.php:405
+msgid "Subscriber"
+msgstr "abonné"
+
+#: old/Wpbase_youtube_OptionsManager.php:407
+msgid "Anyone"
+msgstr "personne"
+
+#: old/Wpbase_youtube_Plugin.php:15
+msgid "Enter in some text"
+msgstr "Entrez dans un texte"
+
+#: old/Wpbase_youtube_Plugin.php:16
+msgid "I have donated to this plugin"
+msgstr "J'ai donné à ce plugin"
+
+#: old/Wpbase_youtube_Plugin.php:17
+msgid "Can See Submission data"
+msgstr "Peuvent voir des données de soumission"
+
+#: old/views/videos.php:65
+msgid "&lt; Prev"
+msgstr "&lt; Précédente"
+
+#: old/views/videos.php:67
+msgid "Next &gt;"
+msgstr "Suivant &gt;"
+
+#: views/admin-options.php:3 views/admin_options.php:3
+msgid "WPBase Youtube Settings"
+msgstr "WPBase Youtube Paramètres"
+
+#: views/admin-options.php:9 views/admin_options.php:9
+msgid "Youtube API Key"
+msgstr "Youtube clé API"
+
+#: views/home.php:4
+msgid "Search, Download and Convert Videos"
+msgstr "Recherche, télécharger et convertir des vidéos"
+
+#: views/home.php:9 views/video.php:35
+msgid "Download"
+msgstr "télécharger"
+
+#: views/home.php:35
+msgid ""
+"To download videos, please click '<b>Run</b>' when prompted.<br> Tick the "
+"box '<b>Always trust content from the publisher</b>' to download seamlessly "
+"in the future."
+msgstr ""
+"Pour télécharger des vidéos, veuillez cliquer sur \"Exécuter <b> </ b>\" "
+"lorsque vous êtes invité. <br> Cochez la case \"Toujours faire confiance au "
+"contenu <b> de l'éditeur </ b> 'pour télécharger de façon transparente à "
+"l'avenir."
+
+#: views/home.php:62
+msgid "No Videos found or site not supported."
+msgstr "Aucune vidéo trouvée ou un site pas pris en charge."
+
+#: views/home.php:64
+msgid ""
+"Please make sure you selected yes when prompted for '<b>Always trust content "
+"from the publisher</b>'."
+msgstr ""
+"S'il vous plaît assurez-vous que vous avez sélectionné Oui lorsque vous êtes "
+"invité pour '<b> systématiquement confiance aux contenus de l'éditeur </ b>."
+
+#: views/home.php:72
+msgid "Only logged in users can download videos."
+msgstr "Seuls les utilisateurs enregistrés peuvent télécharger des vidéos."
+
+#: views/home.php:83
+msgid "Latest Downloads"
+msgstr "Derniers téléchargements"
+
+#: views/home.php:111
+msgid "Now Playing"
+msgstr "En ce moment"
+
+#: views/video.php:31
+msgid "Posted on"
+msgstr "Posté le"
+
+#: views/video.php:51
+msgid "Related Videos"
+msgstr "Vidéos similaires"

@@ -1,22 +1,28 @@
 <?php
-/* Plugin Name: Wordpress Youtube Site Plugin
+/* Plugin Name: WPBase Youtube Site Plugin
 Plugin URI: http://wpoven.com/
-Description: Wordpres Youtube plugin site
+Description: Uses Youtube GData api to create a site, Has vidfetch integration for video conversion.
 Version: 1.0
-Author: Vikas Patial
+Author: Bakers
 Author URI: http://wpoven.com/
 License: GPLv2 or later
 */
 
 
 if(is_admin()) {
-    include('wpbase_youtube_admin.php');
+    include('wpbase-youtube-admin.php');
 }
 
+function myplugin_init() {
+ $plugin_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/' ;
+ load_plugin_textdomain( 'wpbase', false, $plugin_dir );
+}
+add_action('plugins_loaded', 'myplugin_init');
 
-
-include ('wpbase_youtube_init.php');
-include ('wpbase_youtube_main.php');
+include( 'includes/common.php' );
+include ('wpbase-widget.php');
+include ('wpbase-youtube-init.php');
+include ('wpbase-youtube-main.php');
 
 function wpbyURLHandler(&$wp) {
 
@@ -31,13 +37,13 @@ function wpbyURLHandler(&$wp) {
         $parts = explode('/videos/', $request);
 
         if (count($parts) > 1) {
-            $wp->query_vars['pagename'] = 'videos';
+            $wp->query_vars = array('page'=>'','pagename'=>'videos');
             $yPath = explode('/', "list/" . $parts[1]);
         }
 
         $parts = explode('/video/', $request);
         if (count($parts) > 1) {
-            $wp->query_vars['pagename'] = 'videos';
+            $wp->query_vars = array('page'=>'','pagename'=>'videos');
             $yPath = explode('/', "view/" . $parts[1]);
         }
         
@@ -69,8 +75,11 @@ add_filter('wp_title', 'wpbyPTitle',21,2);
 if(is_admin()) {
     add_action('admin_menu', 'wpbyOptionsMenu');  
     add_action( 'admin_init', 'wpbySettings' );
-} else {
+} else {    
     add_action('parse_request', 'wpbyURLHandler');
     add_action('wp_enqueue_scripts', 'wpbyMedia',20);
     add_action('wp', 'wpbyDispatcher');
 }
+
+add_action('widgets_init','wpbyWidget');
+
