@@ -1,20 +1,16 @@
 
 <!-- Search Code -->
 <div class="wpby-box">
-<<<<<<< HEAD
+
     <h2><?php _e('Search, Download and Convert Videos','wpbase');?></h2>
-=======
-    <h2><?php _e('Search, Download and Convert Videos');?></h2>
->>>>>>> origin/master
+
 
     <form method="POST" action="" >
         <input type="text" id="url" name="url" value="<?php echo $input; ?>" style="width:70%;" />
         <span class="buttons">
-<<<<<<< HEAD
+
             <button name="submit" value="Download"><?php _e('Download','wpbase');?></button>
-=======
-            <button name="submit" value="Download"><?php _e('Download');?></button>
->>>>>>> origin/master
+
         </span>
     </form>
 
@@ -40,11 +36,9 @@
             <center>
                 <img src="<?php echo site_url();?>/wp-content/plugins/wpbase-youtube/media/images/loader.gif" alt="loading" />
                 <br />
-<<<<<<< HEAD
+
                 <span style="color: rgb(204, 51, 51);"><?php _e('To download videos, please click \'<b>Run</b>\' when prompted.<br> Tick the box \'<b>Always trust content from the publisher</b>\' to download seamlessly in the future.','wpbase'); ?></span>
-=======
-                <span style="color: rgb(204, 51, 51);"><?php _e('To download videos, please click \'<b>Run</b>\' when prompted.<br> Tick the box \'<b>Always trust content from the publisher</b>\' to download seamlessly in the future.'); ?></span>
->>>>>>> origin/master
+
             </center>
             
             <script type="text/javascript">
@@ -71,15 +65,11 @@
         
         <div id="vidfetchError"  style="display:none;">
             <center>
-<<<<<<< HEAD
+
                 <span style="color: rgb(204, 51, 51);"><b><?php _e('No Videos found or site not supported.','wpbase');?> </b><br />
                     
                     <?php _e('Please make sure you selected yes when prompted for \'<b>Always trust content from the publisher</b>\'.','wpbase');?> </span>
-=======
-                <span style="color: rgb(204, 51, 51);"><b><?php _e('No Videos found or site not supported.');?> </b><br />
-                    
-                    <?php _e('Please make sure you selected yes when prompted for \'<b>Always trust content from the publisher</b>\'.');?> </span>
->>>>>>> origin/master
+
             </center>
         </div>
         <div class="clear"></div>
@@ -87,11 +77,9 @@
     <?php } else {?> 
         <div id="vidfetchError">
             <center>
-<<<<<<< HEAD
+
                 <span style="color: rgb(204, 51, 51);"><b><?php _e('Only logged in users can download videos.','wpbase');?> </b><br />                
-=======
-                <span style="color: rgb(204, 51, 51);"><b><?php _e('Only logged in users can download videos.');?> </b><br />                
->>>>>>> origin/master
+
             </center>
         </div>
     <?php }    
@@ -102,11 +90,9 @@
 </div>
 
 <div class="wpby-header">
-<<<<<<< HEAD
+
     <h2><?php _e('Latest Downloads','wpbase');?></h2>    
-=======
-    <h2><?php _e('Latest Downloads');?></h2>    
->>>>>>> origin/master
+
 </div>
 <div class="wpby-list">
     <?php
@@ -134,11 +120,9 @@
 </div>
 
 <div class="wpby-header">
-<<<<<<< HEAD
+
     <h2><?php _e('Now Playing','wpbase');?></h2>    
-=======
-    <h2><?php _e('Now Playing');?></h2>    
->>>>>>> origin/master
+
 </div>
 <div class="wpby-list">
     <?php
