@@ -4,12 +4,15 @@
     <div class="sorting">
         <?php
         $sortMap = array('relevance' => 'Relevance', 'latest' => 'Latest', 'popular' => 'Popular', 'top' => 'Top');
-
+        $sortMap['relevance']=__('Relevance','wpbase');
+        $sortMap['latest']=__('Latest','wpbase');
+        $sortMap['popular']=__('Popular','wpbase');
+        $sortMap['top']=__('Top','wpbase');
         foreach ($sortMap as $var => $val) {
             $var = str_replace('/', '', $var);
 
             if ($var == $sort) {
-                echo '<span class="current">' . $val . '</span>';
+                echo '<span class="current">' . _e($val,'wpbase') . '</span>';
             } else {
                 ?> 
                 <a title="<?php echo $var; ?>" href="<?php echo site_url(); ?>/videos/sort<?php echo $var . '/' . $keywords; ?>"><span><?php echo $val; ?></span></a> <?php
