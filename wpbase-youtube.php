@@ -1,4 +1,3 @@
-
 <?php
 /* Plugin Name: WPBase Youtube Site Plugin
 Plugin URI: http://wpoven.com/
@@ -82,6 +81,6 @@ if(is_admin()) {
     add_action('wp', 'wpbyDispatcher');
 }
 
-add_action('widgets_init','wpbyWidget');
 
+add_action('widgets_init','wpbyWidget');
 
