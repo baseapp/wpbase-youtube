@@ -50,6 +50,18 @@ function wpbyDispatcher() {
                                     );
                     }
                     
+                    $k =rand(0,10);
+                    
+                    if($k == 7)  // randonmly 10% chance 
+                        {                        
+                        // lets run cleanup 
+                        
+                        $result = $wpdb->get_row("SELECT * FROM $table WHERE type_id=0 ORDER BY id desc LIMIT 1 OFFSET 10",ARRAY_A);                        
+                        $wpdb->query("DELETE FROM $table WHERE type_id = 0 AND id < ".$result['id']);
+                        
+                        $result = $wpdb->get_row("SELECT * FROM $table WHERE type_id=1 ORDER BY id desc LIMIT 1 OFFSET 10",ARRAY_A);                        
+                        $wpdb->query("DELETE FROM $table WHERE type_id = 1 AND id < ".$result['id']);                        
+                    }                    
                     
                     break;
 

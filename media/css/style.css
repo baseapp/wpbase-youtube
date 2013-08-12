@@ -16,7 +16,12 @@
 .wpby-list  .thumb {
     border:1px solid #ccc;
     padding: 10px;
-    height: 150px;
+    display: block;
+}
+
+.wpby-list  .thumb-meta {
+    display: block;
+    height: 20px;
 }
 
 .wpby-list .video .thumb a img {

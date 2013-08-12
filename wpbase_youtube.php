@@ -1,4 +1,3 @@
-
 <?php
 /* Plugin Name: Wordpress Youtube Site Plugin
 Plugin URI: http://wpoven.com/
@@ -14,8 +13,6 @@ if(is_admin()) {
     include('wpbase_youtube_admin.php');
 }
 
-
-
 include ('wpbase_youtube_init.php');
 include ('wpbase_youtube_main.php');
 
@@ -25,7 +22,6 @@ function wpbyURLHandler(&$wp) {
     global $yPath;
 
     $request = $_SERVER['REQUEST_URI'];
-
 
     if (strstr($request, '/videos/') || strstr($request, '/video/')) {
   
