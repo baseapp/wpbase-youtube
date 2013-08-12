@@ -63,7 +63,7 @@ msgid ""
 msgstr ""
 "Il semble que vous n'avez pas Java installé ou est désactivé dans votre "
 "système. <br /> S'il vous plaît télécharger <a href = \"http://www.java.com/"
-"getjava/ \" class =\"link\" target = \"_blank \"> ici </ a>"
+"getjava/ \" class =\"link\" target = \"_blank \"> ici </a>"
 
 #: views/admin-options.php:4
 msgid "WPBase Youtube Settings"
@@ -91,9 +91,9 @@ msgid ""
 "box '<b>Always trust content from the publisher</b>' to download seamlessly "
 "in the future."
 msgstr ""
-"Pour télécharger des vidéos, veuillez cliquer sur \"Exécuter <b> </ b>\" "
+"Pour télécharger des vidéos, veuillez cliquer sur \" <b>Exécuter </b>\" "
 "lorsque vous êtes invité. <br> Cochez la case \"Toujours faire confiance au "
-"contenu <b> de l'éditeur </ b> 'pour télécharger de façon transparente à "
+"contenu <b> de l'éditeur </b> 'pour télécharger de façon transparente à "
 "l'avenir."
 
 #: views/home.php:80
@@ -106,13 +106,13 @@ msgid ""
 "from the publisher</b>'."
 msgstr ""
 "S'il vous plaît assurez-vous que vous avez sélectionné Oui lorsque vous êtes "
-"invité pour '<b> systématiquement confiance aux contenus de l'éditeur </ b>."
+"invité pour '<b> systématiquement confiance aux contenus de l'éditeur </b>."
 
 #: views/home.php:93
 #, php-format
 msgid "Only <a href=\"%s\">Registered</a> users can download videos."
 msgstr ""
-"Seuls <a href=\"%s\"> enregistrés </ a> les utilisateurs peuvent télécharger "
+"Seuls <a href=\"%s\"> enregistrés </a> les utilisateurs peuvent télécharger "
 "les vidéos."
 
 #: views/home.php:108

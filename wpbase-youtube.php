@@ -13,11 +13,6 @@ if(is_admin()) {
     include('wpbase-youtube-admin.php');
 }
 
-function myplugin_init() {
- $plugin_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/' ;
- load_plugin_textdomain( 'wpbase', false, $plugin_dir );
-}
-add_action('plugins_loaded', 'myplugin_init');
 
 include( 'includes/common.php' );
 include ('wpbase-widget.php');
@@ -84,3 +79,5 @@ if(is_admin()) {
 
 add_action('widgets_init','wpbyWidget');
 
+$plugin_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/' ;
+load_plugin_textdomain( 'wpby', false, $plugin_dir );

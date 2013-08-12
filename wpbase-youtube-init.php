@@ -43,6 +43,8 @@ function wpbyMedia() {
 
     wp_register_style('wpby_style', plugins_url('media/css/style.css', __FILE__));
     wp_enqueue_style('wpby_style');
+    
+
 
 }
 

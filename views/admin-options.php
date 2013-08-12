@@ -1,7 +1,7 @@
 
 <div class="wrap">
     <?php screen_icon(); ?>
-    <h2><?php _e('WPBase Youtube Settings','wpbase'); ?></h2>	
+    <h2><?php _e('WPBase Youtube Settings','wpby'); ?></h2>	
     
     <?php
     if (isset($_POST['wpby_apikey'])) { ?>
@@ -22,7 +22,7 @@
         <table class="form-table">
             <tr>
                 <th scope="row">
-                    <label for="wpby_apikey"><?php _e('Youtube API Key','wpbase'); ?></label>
+                    <label for="wpby_apikey"><?php _e('Youtube API Key','wpby'); ?></label>
                 </th>
                 <td>
                     <input type="text" name="wpby_apikey" id="wpby_apikey" value="<?php echo $wpby_apikey; ?>" class="regular-text">                  
@@ -35,7 +35,7 @@
             <tr>
                 
                  <th scope="row">
-                    <label for="wpby_download"><?php _e('Download Options','wpbase'); ?></label>
+                    <label for="wpby_download"><?php _e('Download Options','wpby'); ?></label>
                 </th>
                 
                 <td>

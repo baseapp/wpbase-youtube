@@ -103,7 +103,7 @@ class WPBYWidget extends WP_Widget {
                 
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ,'wpbase'); ?></label> 
+		<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ,'wpby'); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
                 
@@ -113,7 +113,7 @@ class WPBYWidget extends WP_Widget {
 		</p>
                 
                 <p>
-		<label for="<?php echo $this->get_field_name( 'ytkeyword' ); ?>"><?php _e( 'Youtube Keyword' ,'wpbase'); ?> ( Search based )</label> 
+		<label for="<?php echo $this->get_field_name( 'ytkeyword' ); ?>"><?php _e( 'Youtube Keyword' ,'wpby'); ?> ( Search based )</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'ytkeyword' ); ?>" name="<?php echo $this->get_field_name( 'ytkeyword' ); ?>" type="text" value="<?php echo esc_attr( $ytkeyword ); ?>" />
 		</p>
                 
@@ -152,7 +152,7 @@ class WPBYWidget extends WP_Widget {
                 </p>
                 
                 <p>
-		<label for="<?php echo $this->get_field_name( 'count' ); ?>"><?php _e( 'Number of videos to show:' ,'wpbase'); ?></label> 
+		<label for="<?php echo $this->get_field_name( 'count' ); ?>"><?php _e( 'Number of videos to show:' ,'wpby'); ?></label> 
                 <br />
 		<input size="3" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="text" value="<?php echo esc_attr( $count ); ?>" />
 		</p>
