@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: counterize\n"
-"POT-Creation-Date: 2013-08-07 13:33+0530\n"
-"PO-Revision-Date: 2013-08-07 13:34+0530\n"
+"POT-Creation-Date: 2013-08-12 14:08+0530\n"
+"PO-Revision-Date: 2013-08-12 14:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: Baseapp <vikrant@baseapp.com>\n"
 "Language: French\n"
@@ -11,159 +11,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
-"X-Poedit-Basepath: D:/wamp/www/wordpress/wp-content/plugins/wpbase_youtube\n"
+"X-Poedit-Basepath: D:\\wamp\\wpbase_youtube\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: wpbase-widget.php:12
+#: wpbase-widget.php:14
 msgid "Youtube Popular Videos Widget"
 msgstr "Youtube Videos Populaire Widget"
 
-#: wpbase-widget.php:70
+#: wpbase-widget.php:97
 msgid "Latest Videos"
 msgstr "dernières vidéos"
 
-#: wpbase-widget.php:76
+#: wpbase-widget.php:106
 msgid "Title:"
 msgstr "Titre:"
 
-#: wpbase-widget.php:83
+#: wpbase-widget.php:111
+msgid "Youtube Username"
+msgstr "Nom d'utilisateur YouTube"
+
+#: wpbase-widget.php:116
+msgid "Youtube Keyword"
+msgstr "Youtube clé API"
+
+#: wpbase-widget.php:122
+msgid "Video Sorting"
+msgstr "Le tri de la vidéo"
+
+#: wpbase-widget.php:136
+msgid "Region specific"
+msgstr "région spécifique"
+
+#: wpbase-widget.php:146
+msgid "Time frame"
+msgstr "Échéancier"
+
+#: wpbase-widget.php:155
 msgid "Number of videos to show:"
 msgstr "Nombre de vidéos pour montrer:"
 
-#: wpbase-youtube-main.php:80 wpbase_youtube_main.php:81
+#: wpbase-youtube-main.php:80
 msgid "Videos"
 msgstr "vidéos"
 
-#: old/wpbase_youtube.php:140
+#: includes/common.php:51
 msgid ""
-"Error: plugin \"wpbase-youtube\" requires a newer version of PHP to be "
-"running."
+"It appears you do not have Java installed or it is disabled on your system."
+"<br />Please download it <a href=\"http://www.java.com/getjava/\" class="
+"\"link\" target=\"_blank\">here</a>"
 msgstr ""
-"Erreur: plugin  \"wpbase-youtube \" nécessite une version plus récente de "
-"PHP doit être en cours d'exécution."
+"Il semble que vous n'avez pas Java installé ou est désactivé dans votre "
+"système. <br /> S'il vous plaît télécharger <a href = \"http://www.java.com/"
+"getjava/ \" class =\"link\" target = \"_blank \"> ici </ a>"
 
-#: old/wpbase_youtube.php:141
-msgid "Minimal version of PHP required: "
-msgstr "Version minimale de PHP requise:"
-
-#: old/wpbase_youtube.php:142
-msgid "Your server's PHP version: "
-msgstr "La version PHP de votre serveur:"
-
-#: old/Wpbase_youtube_OptionsManager.php:266
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
-
-#: old/Wpbase_youtube_OptionsManager.php:284
-msgid "System Settings"
-msgstr "Paramètres système"
-
-#: old/Wpbase_youtube_OptionsManager.php:286
-msgid "System"
-msgstr "système"
-
-#: old/Wpbase_youtube_OptionsManager.php:287
-msgid "PHP Version"
-msgstr "Version de PHP"
-
-#: old/Wpbase_youtube_OptionsManager.php:292
-msgid ""
-"(WARNING: This plugin may not work properly with versions earlier than PHP "
-"5.2)"
-msgstr ""
-"(ATTENTION: Ce plugin ne fonctionne pas correctement avec les versions "
-"antérieures à PHP 5.2)"
-
-#: old/Wpbase_youtube_OptionsManager.php:298
-msgid "MySQL Version"
-msgstr "MySQL Version"
-
-#: old/Wpbase_youtube_OptionsManager.php:303
-msgid ""
-"(WARNING: This plugin may not work properly with versions earlier than MySQL "
-"5.0)"
-msgstr ""
-"(ATTENTION: Ce plugin ne fonctionne pas correctement avec les versions "
-"antérieures de MySQL 5.0)"
-
-#: old/Wpbase_youtube_OptionsManager.php:311
-msgid "Settings"
-msgstr "réglages"
-
-#: old/Wpbase_youtube_OptionsManager.php:334
-msgid "Save Changes"
-msgstr "Enregistrer les modifications"
-
-#: old/Wpbase_youtube_OptionsManager.php:392
-msgid "true"
-msgstr "vrai"
-
-#: old/Wpbase_youtube_OptionsManager.php:394
-msgid "false"
-msgstr "faux"
-
-#: old/Wpbase_youtube_OptionsManager.php:397
-msgid "Administrator"
-msgstr "administrateur"
-
-#: old/Wpbase_youtube_OptionsManager.php:399
-msgid "Editor"
-msgstr "éditeur"
-
-#: old/Wpbase_youtube_OptionsManager.php:401
-msgid "Author"
-msgstr "auteur"
-
-#: old/Wpbase_youtube_OptionsManager.php:403
-msgid "Contributor"
-msgstr "Contributeur"
-
-#: old/Wpbase_youtube_OptionsManager.php:405
-msgid "Subscriber"
-msgstr "abonné"
-
-#: old/Wpbase_youtube_OptionsManager.php:407
-msgid "Anyone"
-msgstr "personne"
-
-#: old/Wpbase_youtube_Plugin.php:15
-msgid "Enter in some text"
-msgstr "Entrez dans un texte"
-
-#: old/Wpbase_youtube_Plugin.php:16
-msgid "I have donated to this plugin"
-msgstr "J'ai donné à ce plugin"
-
-#: old/Wpbase_youtube_Plugin.php:17
-msgid "Can See Submission data"
-msgstr "Peuvent voir des données de soumission"
-
-#: old/views/videos.php:65
-msgid "&lt; Prev"
-msgstr "&lt; Précédente"
-
-#: old/views/videos.php:67
-msgid "Next &gt;"
-msgstr "Suivant &gt;"
-
-#: views/admin-options.php:4 views/admin_options.php:4
+#: views/admin-options.php:4
 msgid "WPBase Youtube Settings"
 msgstr "WPBase Youtube Paramètres"
 
-#: views/admin-options.php:10 views/admin_options.php:10
+#: views/admin-options.php:25
 msgid "Youtube API Key"
 msgstr "Youtube clé API"
+
+#: views/admin-options.php:38
+msgid "Download Options"
+msgstr "télécharger"
 
 #: views/home.php:5
 msgid "Search, Download and Convert Videos"
 msgstr "Recherche, télécharger et convertir des vidéos"
 
-#: views/home.php:12 views/video.php:35
+#: views/home.php:12 views/video.php:39
 msgid "Download"
 msgstr "télécharger"
 
-#: views/home.php:40
+#: views/home.php:51
 msgid ""
 "To download videos, please click '<b>Run</b>' when prompted.<br> Tick the "
 "box '<b>Always trust content from the publisher</b>' to download seamlessly "
@@ -174,11 +96,11 @@ msgstr ""
 "contenu <b> de l'éditeur </ b> 'pour télécharger de façon transparente à "
 "l'avenir."
 
-#: views/home.php:69
+#: views/home.php:80
 msgid "No Videos found or site not supported."
 msgstr "Aucune vidéo trouvée ou un site pas pris en charge."
 
-#: views/home.php:71
+#: views/home.php:82
 msgid ""
 "Please make sure you selected yes when prompted for '<b>Always trust content "
 "from the publisher</b>'."
@@ -186,15 +108,18 @@ msgstr ""
 "S'il vous plaît assurez-vous que vous avez sélectionné Oui lorsque vous êtes "
 "invité pour '<b> systématiquement confiance aux contenus de l'éditeur </ b>."
 
-#: views/home.php:81
-msgid "Only logged in users can download videos."
-msgstr "Seuls les utilisateurs enregistrés peuvent télécharger des vidéos."
+#: views/home.php:93
+#, php-format
+msgid "Only <a href=\"%s\">Registered</a> users can download videos."
+msgstr ""
+"Seuls <a href=\"%s\"> enregistrés </ a> les utilisateurs peuvent télécharger "
+"les vidéos."
 
-#: views/home.php:94
+#: views/home.php:108
 msgid "Latest Downloads"
 msgstr "Derniers téléchargements"
 
-#: views/home.php:124
+#: views/home.php:138
 msgid "Now Playing"
 msgstr "En ce moment"
 
@@ -202,7 +127,7 @@ msgstr "En ce moment"
 msgid "Posted on"
 msgstr "Posté le"
 
-#: views/video.php:53
+#: views/video.php:59
 msgid "Related Videos"
 msgstr "Vidéos similaires"
 
@@ -221,3 +146,91 @@ msgstr "populaire"
 #: views/videos.php:10
 msgid "Top"
 msgstr "supérieur"
+
+#~ msgid ""
+#~ "Error: plugin \"wpbase-youtube\" requires a newer version of PHP to be "
+#~ "running."
+#~ msgstr ""
+#~ "Erreur: plugin  \"wpbase-youtube \" nécessite une version plus récente de "
+#~ "PHP doit être en cours d'exécution."
+
+#~ msgid "Minimal version of PHP required: "
+#~ msgstr "Version minimale de PHP requise:"
+
+#~ msgid "Your server's PHP version: "
+#~ msgstr "La version PHP de votre serveur:"
+
+#~ msgid "You do not have sufficient permissions to access this page."
+#~ msgstr ""
+#~ "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
+
+#~ msgid "System Settings"
+#~ msgstr "Paramètres système"
+
+#~ msgid "System"
+#~ msgstr "système"
+
+#~ msgid "PHP Version"
+#~ msgstr "Version de PHP"
+
+#~ msgid ""
+#~ "(WARNING: This plugin may not work properly with versions earlier than "
+#~ "PHP 5.2)"
+#~ msgstr ""
+#~ "(ATTENTION: Ce plugin ne fonctionne pas correctement avec les versions "
+#~ "antérieures à PHP 5.2)"
+
+#~ msgid "MySQL Version"
+#~ msgstr "MySQL Version"
+
+#~ msgid ""
+#~ "(WARNING: This plugin may not work properly with versions earlier than "
+#~ "MySQL 5.0)"
+#~ msgstr ""
+#~ "(ATTENTION: Ce plugin ne fonctionne pas correctement avec les versions "
+#~ "antérieures de MySQL 5.0)"
+
+#~ msgid "Settings"
+#~ msgstr "réglages"
+
+#~ msgid "Save Changes"
+#~ msgstr "Enregistrer les modifications"
+
+#~ msgid "true"
+#~ msgstr "vrai"
+
+#~ msgid "false"
+#~ msgstr "faux"
+
+#~ msgid "Administrator"
+#~ msgstr "administrateur"
+
+#~ msgid "Editor"
+#~ msgstr "éditeur"
+
+#~ msgid "Author"
+#~ msgstr "auteur"
+
+#~ msgid "Contributor"
+#~ msgstr "Contributeur"
+
+#~ msgid "Subscriber"
+#~ msgstr "abonné"
+
+#~ msgid "Anyone"
+#~ msgstr "personne"
+
+#~ msgid "Enter in some text"
+#~ msgstr "Entrez dans un texte"
+
+#~ msgid "I have donated to this plugin"
+#~ msgstr "J'ai donné à ce plugin"
+
+#~ msgid "Can See Submission data"
+#~ msgstr "Peuvent voir des données de soumission"
+
+#~ msgid "&lt; Prev"
+#~ msgstr "&lt; Précédente"
+
+#~ msgid "Next &gt;"
+#~ msgstr "Suivant &gt;"
