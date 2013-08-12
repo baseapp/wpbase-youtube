@@ -7,9 +7,11 @@ function wpbyOptions() {
     
     if(isset($_POST['submit'])) {
         update_option('wpby_apikey',$_POST['wpby_apikey']);
+        update_option('wpby_download',$_POST['wpby_download']);
     } 
     
     $data['wpby_apikey'] = get_option('wpby_apikey');
+    $data['wpby_download'] = get_option('wpby_download');
     
     
     echo wpbyView('admin-options',$data);

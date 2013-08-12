@@ -102,7 +102,7 @@ class Youtube {
 
         $urlorderby = empty($orderby) ? '' : '&orderby=' . $orderByVocabulary[$orderby];
 
-        $feedURL = "http://gdata.youtube.com/feeds/api/videos?vq=$keywords$urlorderby&start-index=$start_index&max-results=$results&format=5&alt=rss".$apiPlus;
+        $feedURL = "http://gdata.youtube.com/feeds/api/videos?vq=$keywords$urlorderby&start-index=$start_index&max-results=$results&format=5&alt=json".$apiPlus;
 
         $checkWords = explode(',', B_SITE_CATEGORIES);
 
@@ -114,49 +114,35 @@ class Youtube {
 
         $canCache = false;
 
-
-        if (in_array($keywords, $checkWords) && $page < 6) {
-            $canCache = true;
-            $cache = Cache::get($feedURL);
-            if ($cache) {
-                return unserialize($cache);
-            }
-        }
-
-
         $fetch = wp_remote_get($feedURL);
-        $feed = $fetch['body'];
-
-        $rvideos = array();
-
-        if (preg_match('%<openSearch:totalResults>([0-9]+)</openSearch:totalResults>%s', $feed, $count)) {
-            preg_match_all('%<title>(.[^<]*?)</title><desc%s', $feed, $titles);
-            preg_match_all('%<yt:duration seconds=\'([0-9]+)\'/>%s', $feed, $durations);
-            preg_match_all('%<description>(.*?)</description>%s', $feed, $descs);
-            preg_match_all('%<media:keywords>(.*?)</media:keywords>%sm', $feed, $keywords);
-            preg_match_all('/<media:thumbnail url=\'(.[^\']*?)1\.jpg\'/s', $feed, $thumbnails);
-            preg_match_all('%<link>http://www\.youtube\.com/watch\?v=(.[^&]*?)&%s', $feed, $ids);
-            preg_match_all('/viewCount=\'([0-9]+)\'/', $feed, $views);
-            preg_match_all('/rating average=\'([0-9.]+)\'/', $feed, $ratings);
-
-            for ($i = 0; $i < count($titles[1]); $i++) {
-                $video['count'] = $count[1];
-                $video['views'] = isset($views[1][$i]) ? $views[1][$i] : rand(10, 30);
-                $video['title'] = $titles[1][$i];
-                $video['duration'] = $durations[1][$i];
-                //$video['description'] = $descs[1][$i];
-                $video['tags'] = $this->_makeTags($titles[1][$i]);
-                $video['thumbnail'] = $thumbnails[1][$i];
-                $video['id'] = $ids[1][$i];
-                $video['rating'] = isset($ratings[1][$i]) ? $ratings[1][$i] : 0;
-                $rvideos[] = $video;
+        
+        $feed = json_decode($fetch['body'],true);
                 
-            }
-            
+        $rvideos = array();
+        
+        if(!isset($feed['feed']['entry'])) {
+            return false;
         }
-
-        if ($canCache && count($rvideos) > 5) {
-            Cache::set($feedURL, serialize($rvideos), 60 * 60 * 5);
+        
+        $count = $feed['feed']['openSearch$totalResults']['$t'];
+        
+        if($count > 1000 ) {
+            $count = 1000;
+        }
+        
+        foreach($feed['feed']['entry'] as $entry) {
+            $video['views'] = $entry['yt$statistics']['viewCount'];
+            $video['title'] = $entry['title']['$t']; 
+            $video['duration'] = $entry['media$group']['yt$duration']['seconds'];
+            $video['description'] = $entry['content']['$t'];
+            $thumbnail = $entry['media$group']['media$thumbnail'][0]['url'];
+            $video['thumbnail']   = str_replace('0.jpg','',$thumbnail);
+            $video['rating']      = $entry['gd$rating']['average'];
+            list($d,$id) = explode('videos/',$entry['id']['$t']);
+            $video['id'] =  $id;
+            $video['count'] = $count;
+            $video['tags'] = $this->_makeTags($video['title']);
+            $rvideos[] = $video;
         }
 
         return $rvideos;
@@ -166,53 +152,42 @@ class Youtube {
         
         $apiPlus = "";
         $apikey = get_option('wpby_apikey');
-        if(!empty($apikey)) {
-            $apiPlus = '&apikey='.$apikey;
-        }
         
-        if(!empty ($apikey)) {
-            if(strstr($feedURL,'?')) {
-                $feedURL .= '&apikey='.$apikey;
-            } else {
-                $feedURL .= '?apikey='.$apikey;
-            }
+        if(!empty ($apikey)) {            
+             $feedURL .= '&apikey='.$apikey;
         }
              
         $fetch = wp_remote_get($feedURL);
-        $feed = $fetch['body'];
         
+        $feed = json_decode($fetch['body'],true);
+                
         $rvideos = array();
-
-        if (preg_match('%<openSearch:totalResults>([0-9]+)</openSearch:totalResults>%s', $feed, $count)) {
-            preg_match_all('%y><title>(.[^<]*?)</title><l%s', $feed, $titles);
-            preg_match_all('%<yt:duration seconds=\'([0-9]+)\'/>%s', $feed, $durations);
-            preg_match_all('%<description>(.*?)</description>%s', $feed, $descs);
-            preg_match_all('%<media:keywords>(.*?)</media:keywords>%sm', $feed, $keywords);
-            preg_match_all('/<media:thumbnail url=\'(.[^\']*?)1\.jpg\'/s', $feed, $thumbnails);
-            preg_match_all('%<link>http://www\.youtube\.com/watch\?v=(.[^&]*?)&%s', $feed, $ids);
-            preg_match_all('/viewCount=\'([0-9]+)\'/', $feed, $views);
-            preg_match_all('/rating average=\'([0-9.]+)\'/', $feed, $ratings);
-
-            
-            for ($i = 0; $i < count($titles[1]); $i++) {
-
-                $video['count'] = $count[1];
-                $video['views'] = isset($views[1][$i]) ? $views[1][$i] : rand(10, 30);
-                $video['title'] = $titles[1][$i];
-                $video['duration'] = $durations[1][$i];
-                //$video['description'] = $descs[1][$i];
-                $video['tags'] = $this->_makeTags($titles[1][$i]);
-                $video['thumbnail'] = $thumbnails[1][$i];
-                $video['id'] = $ids[1][$i];
-                $video['rating'] = isset($ratings[1][$i]) ? $ratings[1][$i] : 0;
-                $rvideos[] = $video;
-            }
+        
+        if(!isset($feed['feed']['entry'])) {
+            return false;
         }
         
+        $count = $feed['feed']['openSearch$totalResults']['$t'];
         
+        if($count > 1000 ) {
+            $count = 1000;
+        }
         
-
-            
+        foreach($feed['feed']['entry'] as $entry) {
+            $video['views'] = $entry['yt$statistics']['viewCount'];
+            $video['title'] = $entry['title']['$t']; 
+            $video['duration'] = $entry['media$group']['yt$duration']['seconds'];
+            $video['description'] = $entry['content']['$t'];
+            $thumbnail = $entry['media$group']['media$thumbnail'][0]['url'];
+            $video['thumbnail']   = str_replace('0.jpg','',$thumbnail);
+            $video['rating']      = $entry['gd$rating']['average'];
+            list($d,$id) = explode('videos/',$entry['id']['$t']);
+            $video['id'] =  $id;
+            $video['count'] = $count;
+            $video['tags'] = $this->_makeTags($video['title']);
+            $rvideos[] = $video;
+        }
+        
         return $rvideos;      
         
     }
@@ -224,41 +199,39 @@ class Youtube {
             $apiPlus = '&apikey='.$apikey;
         }
         
-        $feedURL = 'http://gdata.youtube.com/feeds/api/videos/' . $id . '/related?format=5&alt=rss&max-results=10'.$apiPlus;
+        $feedURL = 'http://gdata.youtube.com/feeds/api/videos/' . $id . '/related?format=5&alt=json&max-results=10'.$apiPlus;
 
         $fetch = wp_remote_get($feedURL);
         $feed = $fetch['body'];
         
-        
-
-        //echo $feed;
+        $feed = json_decode($fetch['body'],true);
+                
         $rvideos = array();
-
-        if (preg_match('%<openSearch:totalResults>([0-9]+)</openSearch:totalResults>%s', $feed, $count)) {
-            preg_match_all('%<title>(.[^<]*?)</title><desc%s', $feed, $titles);
-            preg_match_all('%<yt:duration seconds=\'([0-9]+)\'/>%s', $feed, $durations);
-            preg_match_all('%<description>(.*?)</description>%s', $feed, $descs);
-            preg_match_all('%<media:keywords>(.*?)</media:keywords>%sm', $feed, $keywords);
-            preg_match_all('/<media:thumbnail url=\'(.[^\']*?)1\.jpg\'/s', $feed, $thumbnails);
-            preg_match_all('%<link>http://www\.youtube\.com/watch\?v=(.[^&]*?)&%s', $feed, $ids);
-            preg_match_all('/viewCount=\'([0-9]+)\'/', $feed, $views);
-            preg_match_all('/rating average=\'([0-9.]+)\'/', $feed, $ratings);
-
-            for ($i = 0; $i < count($titles[1]); $i++) {
-
-                $video['count'] = $count[1];
-                $video['views'] = isset($views[1][$i]) ? $views[1][$i] : rand(10, 30);
-                $video['title'] = $titles[1][$i];
-                $video['duration'] = $durations[1][$i];
-                //$video['description'] = $descs[1][$i];
-                $video['tags'] = $this->_makeTags($titles[1][$i]);
-                $video['thumbnail'] = $thumbnails[1][$i];
-                $video['id'] = $ids[1][$i];
-                $video['rating'] = isset($ratings[1][$i]) ? $ratings[1][$i] : 0;
-                $rvideos[] = $video;
-            }
+        
+        if(!isset($feed['feed']['entry'])) {
+            return false;
         }
-
+        
+        $count = $feed['feed']['openSearch$totalResults']['$t'];
+        
+        if($count > 1000 ) {
+            $count = 1000;
+        }
+        
+        foreach($feed['feed']['entry'] as $entry) {
+            $video['views'] = $entry['yt$statistics']['viewCount'];
+            $video['title'] = $entry['title']['$t']; 
+            $video['duration'] = $entry['media$group']['yt$duration']['seconds'];
+            $video['description'] = $entry['content']['$t'];
+            $thumbnail = $entry['media$group']['media$thumbnail'][0]['url'];
+            $video['thumbnail']   = str_replace('0.jpg','',$thumbnail);
+            $video['rating']      = $entry['gd$rating']['average'];
+            list($d,$id) = explode('videos/',$entry['id']['$t']);
+            $video['id'] =  $id;
+            $video['count'] = $count;
+            $video['tags'] = $this->_makeTags($video['title']);
+            $rvideos[] = $video;
+        }
             
         return $rvideos;
     }
@@ -268,46 +241,30 @@ class Youtube {
         $apiPlus = "";
         $apikey = get_option('wpby_apikey');
         if(!empty($apikey)) {
-            $apiPlus = '?apikey='.$apikey;
+            $apiPlus = '&apikey='.$apikey;
         }
         
-        $feedURL = "http://gdata.youtube.com/feeds/api/videos/$id".$apiPlus;
-
+        $feedURL = "http://gdata.youtube.com/feeds/api/videos/$id?alt=json".$apiPlus;
 
         $fetch = wp_remote_get($feedURL);
-        $video = $fetch['body'];
+        $videoFeed = json_decode($fetch['body'],true);
+                
+        $entry = $videoFeed['entry'];
+        
+        $video['views'] = $entry['yt$statistics']['viewCount'];
+        $video['title'] = $entry['title']['$t']; 
+        $video['duration'] = $entry['media$group']['yt$duration']['seconds'];
+        $video['description'] = $entry['content']['$t'];
+        $thumbnail = $entry['media$group']['media$thumbnail'][0]['url'];
+        $video['thumbnail']   = str_replace('0.jpg','',$thumbnail);
+        $video['rating']      = $entry['gd$rating']['average'];
+        list($d,$id) = explode('videos/',$entry['id']['$t']);
+        $video['id'] =  $id;
+        $video['count'] = $count;
+        $video['tags'] = $this->_makeTags($video['title']);
+        $rvideos[] = $video;
 
-        $rvideo = false;
-        if (strstr($video, 'title')) {
-
-            $rvideo['id'] = $id;
-
-            preg_match('%<title type=\'text\'>(.[^<]*?)</title>%', $video, $title);
-            $rvideo['title'] = $title[1];
-
-            preg_match('%<media:description type=\'plain\'>(.[^<]*?)</%s', $video, $description);
-            $rvideo['description'] = $description[1];
-
-            preg_match('%<media:keywords>(.[^<]*?)</media:keywords>%', $video, $tags);
-            $rvideo['tags'] = $this->_makeTags($title[1]);
-
-            preg_match('/rating average=\'([0-9.]+)\'/', $video, $rating);
-            $rvideo['rating'] = $rating[1];
-
-            preg_match('/viewCount=\'([0-9]+)\'/', $video, $views);
-            $rvideo['views'] = $views[1];
-
-            preg_match('/favoriteCount=\'([0-9]+)\'/', $video, $favorites);
-            $rvideo['favorites'] = $favorites[1];
-
-            preg_match('%<published>(.*?)</published>%', $video, $published);
-            $rvideo['published'] = strtotime(str_replace(array('T', 'Z'), ' ', $published[1]));
-
-            preg_match('/<media:player.*?<media:thumbnail url=\'(.[^\']*?)[0-9]+\.jpg\'/s', $video, $thumbnail);
-            $rvideo['thumbnail'] = $thumbnail[1];
-        }
-
-        return $rvideo;
+        return $video;
     }
 
     function embed($id, $width = '425', $height = '355', $autostart = false) {
@@ -326,5 +283,19 @@ class Youtube {
 
         return $video;
     }
-
+    
+    /* feed generation functions */ 
+    
+    function getRegions() {
+        return array("AR"=>"Argentina","AU"=>"Australia","AT"=>"Austria","BE"=>"Belgium","BR"=>"Brazil","CA"=>"Canada","CL"=>"Chile","CO"=>"Colombia","CZ"=>"Czech Republic","EG"=>"Egypt","FR"=>"France","DE"=>"Germany","GB"=>"Great Britain","HK"=>"Hong Kong","HU"=>"Hungary","IN"=>"India","IE"=>"Ireland","IL"=>"Israel","IT"=>"Italy","JP"=>"Japan","ID"=>"Country	Region","JO"=>"Jordan","MY"=>"Malaysia","MX"=>"Mexico","MA"=>"Morocco","NL"=>"Netherlands","NZ"=>"New Zealand","PE"=>"Peru","PH"=>"Philippines","PL"=>"Poland","RU"=>"Russia","SA"=>"Saudi Arabia","SG"=>"Singapore","ZA"=>"South Africa","KR"=>"South Korea","ES"=>"Spain","SE"=>"Sweden","CH"=>"Switzerland","TW"=>"Taiwan","AE"=>"United Arab Emirates","US"=>"United States");
+    }
+    
+    function getSorts() {
+        return array("top_rated"=>"Top rated","top_favorites"=>"Top favorites","most_shared"=>"Most shared","most_popular"=>"Most popular","most_recent"=>"Most recent","most_discussed"=>"Most discussed","recently_featured"=>"Recently featured","on_the_web"=>"Trending videos","most_viewed"=>"Most viewed","relevance"=>"Relevance ( Search )","published"=>"Published ( Search )","viewCount"=>"Views ( Search )","rating"=>"Rating ( Search )");
+    }
+    
+    
+    function getTimeFrames() {
+        return array('today'=>"Today",'this_week'=>"This week",'this_month'=>"This Month",'all_time'=>'All Time');
+    }
 }

@@ -2,23 +2,34 @@
 <!-- Search Code -->
 <div class="wpby-box">
 
-    <h2><?php _e('Search, Download and Convert Videos','wpbase');?></h2>
+    <h2><?php _e('Search, Download and Convert Videos','wpby');?></h2>
 
 
     <form method="POST" action="" >
         <input type="text" id="url" name="url" value="<?php echo $input; ?>" style="width:70%;" />
         <span class="buttons">
 
-            <button name="submit" value="Download"><?php _e('Download','wpbase');?></button>
+            <button name="submit" value="Download"><?php _e('Download','wpby');?></button>
 
         </span>
     </form>
 
     <div class="clear"></div>
     
-    <?php if(isset ($url)) { 
+    <?php 
     
-        if(is_user_logged_in()) {
+    $canDownload = true;
+    $download = get_option('wpby_download');
+    
+    if(isset ($url) && $download < 2) { 
+    
+       if($download) {
+           if(! is_user_logged_in() ) {
+               $canDownload = false;
+           }
+       }
+        
+        if($canDownload) {
         
     ?>
     
@@ -37,7 +48,7 @@
                 <img src="<?php echo site_url();?>/wp-content/plugins/wpbase-youtube/media/images/loader.gif" alt="loading" />
                 <br />
 
-                <span style="color: rgb(204, 51, 51);"><?php _e('To download videos, please click \'<b>Run</b>\' when prompted.<br> Tick the box \'<b>Always trust content from the publisher</b>\' to download seamlessly in the future.','wpbase'); ?></span>
+                <span style="color: rgb(204, 51, 51);"><?php _e('To download videos, please click \'<b>Run</b>\' when prompted.<br> Tick the box \'<b>Always trust content from the publisher</b>\' to download seamlessly in the future.','wpby'); ?></span>
 
             </center>
             
@@ -66,9 +77,9 @@
         <div id="vidfetchError"  style="display:none;">
             <center>
 
-                <span style="color: rgb(204, 51, 51);"><b><?php _e('No Videos found or site not supported.','wpbase');?> </b><br />
+                <span style="color: rgb(204, 51, 51);"><b><?php _e('No Videos found or site not supported.','wpby');?> </b><br />
                     
-                    <?php _e('Please make sure you selected yes when prompted for \'<b>Always trust content from the publisher</b>\'.','wpbase');?> </span>
+                    <?php _e('Please make sure you selected yes when prompted for \'<b>Always trust content from the publisher</b>\'.','wpby');?> </span>
 
             </center>
         </div>
@@ -78,7 +89,10 @@
         <div id="vidfetchError">
             <center>
 
-                <span style="color: rgb(204, 51, 51);"><b><?php _e('Only logged in users can download videos.','wpbase');?> </b><br />                
+                <span style="color: rgb(204, 51, 51);"><strong>
+                    <?php $msg = __('Only <a href="%s">Registered</a> users can download videos.','wpby');
+                    echo sprintf($msg,  site_url().'/wp-login.php');
+                    ?></strong><br />                
 
             </center>
         </div>
@@ -91,7 +105,7 @@
 
 <div class="wpby-header">
 
-    <h2><?php _e('Latest Downloads','wpbase');?></h2>    
+    <h2><?php _e('Latest Downloads','wpby');?></h2>    
 
 </div>
 <div class="wpby-list">
@@ -121,7 +135,7 @@
 
 <div class="wpby-header">
 
-    <h2><?php _e('Now Playing','wpbase');?></h2>    
+    <h2><?php _e('Now Playing','wpby');?></h2>    
 
 </div>
 <div class="wpby-list">

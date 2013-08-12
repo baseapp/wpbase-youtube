@@ -28,11 +28,18 @@
     <div class="box meta">
 
 
-            <span class="date">  <?php _e('Posted on','wpbase');?>  <?php echo date('jS M @ H:i', $video['published']); ?> </span>
+            <span class="date">  <?php _e('Posted on','wpby');?>  <?php echo date('jS M @ H:i', $video['published']); ?> </span>
             <span class="views">  <?php echo number_format($video['views']); ?> </span>
          
-           
-            <span class="download"><a href="#"  onclick="jQuery('#df').submit();return false;">  <?php _e('Download','wpbase');?> </a></span>
+            <?php 
+            $download = get_option('wpby_download');
+            
+            if($download < 2) {
+            ?>
+            <span class="download"><a href="#"  onclick="jQuery('#df').submit();return false;">  <?php _e('Download','wpby');?> </a></span>
+            <?php 
+            }
+            ?>
 
              
             <span class="rating">  <?php echo stars($video['rating']); ?> </span>
@@ -46,11 +53,10 @@
 
     </div>
 </div>
-</div>
 
 <div class="wpby-header">
 
-<h2> <?php _e('Related Videos','wpbase');?> </h2>
+<h2> <?php _e('Related Videos','wpby');?> </h2>
 
 </div>
 
@@ -72,7 +78,7 @@
                     <?php echo stars($video['rating'], 's'); ?>
                     <span class="views"> <?php echo number_format($video['views']); ?> </span>
                 </div>
-                <h3><?php echo $video['title']; ?></h3>            
+                <h3><?php echo truncate($video['title'],60); ?></h3>            
             </div>  <!-- Video div  --> <?php
          }
             ?>

@@ -31,7 +31,9 @@ function endRotate() {
 /* start handlers etc */
  jQuery(document).ready(function() {
                 jQuery(".rotate img").mouseover(startRotate);
-                jQuery(".rotate img").mouseleave(endRotate);                
+                jQuery(".rotate img").mouseleave(endRotate);           
+                jQuery(".rotate img").click(endRotate);           
+                
             });
 
 loaderVisible = true;
@@ -59,6 +61,8 @@ function vidfetchAppend(type,name,index,title)
     name = name.replace("Low Quality","Low Quality");
     name = name.replace("Medium Quality","Medium Quality");
     name = name.replace("High Quality","High Quality");
+    
+    name = '<span class="type">[ '+type+' ]</span>' + name;
 
     var proxyLink = VFProxy+index+"/"+title+"."+type.toLowerCase();
     jQuery('.vthumb').html('<img src="'+VFThumbnail+'" alt="'+title+'" />');

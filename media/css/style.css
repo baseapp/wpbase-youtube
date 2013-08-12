@@ -1,8 +1,13 @@
 
+.wpby-list {
+    border-top: 1px solid #efefef;
+    padding-top: 10px;
+}
+
 .wpby-list .video {
     float: left;
     margin-right: 9px;
-    width: 200px;
+    width: 32%;
     height: 220px;
     overflow: hidden;
     margin-right: 5px;
@@ -12,7 +17,6 @@
     border:1px solid #ccc;
     padding: 10px;
     height: 150px;
-
 }
 
 .wpby-list .video .thumb a img {
@@ -21,24 +25,23 @@
 }
 
 .wpby-list .video .thumb .rating {
-    margin-top: 1px;   
+    margin-top: 1px;
+    float: left;
 }
 
 .wpby-list .video .thumb .views {
     float: right;
     color: #999;
-    margin-top: -18px;
-    padding-right: 16px;
-    font-size: 10px;
-    background:url(../images/sstats.png) no-repeat 100% 0px;
+    padding: 1px 20px 0px 0px;
+    font-size: 12px;
+    background:url(../images/sstats.png) no-repeat 100% 5px;
 }
 .wpby-list .frontviews{
     float: right;
     color: #999;
-    margin-top: 4px;
-    padding-right: 16px;
-    font-size: 10px;
-    background:url(../images/sstats.png) no-repeat 100% 0px;
+    padding-right: 20px;
+    font-size: 12px;
+    background:url(../images/sstats.png) no-repeat top right;
 }
 .wpby-list .video .thumb .date {
     margin-top: 5px;
@@ -54,9 +57,8 @@
 }
 
 .wpby-header {
-    border-bottom: 1px solid #efefef;
-    margin-bottom: 20px;
-    height: 30px;
+    margin-bottom: 10px;
+    height: 32px;
 }
 .entry-content .wpby-header h2 {
     float: left;    
@@ -107,7 +109,7 @@
 
 .watch .meta .date {
     padding-left: 20px;
-    background:url(../images/cal.png) no-repeat 0px 0px;
+    background:url(../images/cal.png) no-repeat top left;
 }
 .watch .meta .rating {
     float: right;
@@ -155,6 +157,7 @@
     border: 1px solid #efefef;
     padding: 10px;
     margin-bottom: 20px;
+    width: 98%;
 }
 
 .wpby-box h2 {
@@ -171,6 +174,7 @@
     float:left;
     margin-right: 2px;
     position: relative;
+    width: 48%;
 }
 
 .wpby-widget li a{
@@ -181,8 +185,8 @@
 
 .wpby-widget li .duration {
     position: absolute;
-    top :70px;
-    left:80px;
+    bottom :10%;
+    left:10%;
     background: #000;
     line-height: 10px;
     padding: 3px;     
@@ -209,6 +213,10 @@
     border-bottom: 1px solid #efefef;
 }
 
+#vidfetchLinks ul {
+    padding: 0px;
+}
+
 #vidfetchLinks li {
     list-style: none;
     margin: 0px;
@@ -217,8 +225,16 @@
 #vidfetchLinks a {
     text-decoration: none;
 }
+
+#vidfetchLinks a .type {
+    width: 70px;
+    diaply: block;
+    float: left;
+}
+
 #vidfetchLinks .vlinks {
     float :left;
+    width: 300px;
 }
 
 
