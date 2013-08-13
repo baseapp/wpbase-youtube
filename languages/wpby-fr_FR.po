@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: counterize\n"
-"POT-Creation-Date: 2013-08-12 14:08+0530\n"
-"PO-Revision-Date: 2013-08-12 14:09+0530\n"
+"POT-Creation-Date: 2013-08-13 13:57+0530\n"
+"PO-Revision-Date: 2013-08-13 14:11+0530\n"
 "Last-Translator: \n"
 "Language-Team: Baseapp <vikrant@baseapp.com>\n"
 "Language: French\n"
@@ -51,19 +51,18 @@ msgstr "Échéancier"
 msgid "Number of videos to show:"
 msgstr "Nombre de vidéos pour montrer:"
 
-#: wpbase-youtube-main.php:80
+#: wpbase-youtube-main.php:92
 msgid "Videos"
 msgstr "vidéos"
 
 #: includes/common.php:51
+#, php-format
 msgid ""
 "It appears you do not have Java installed or it is disabled on your system."
-"<br />Please download it <a href=\"http://www.java.com/getjava/\" class="
-"\"link\" target=\"_blank\">here</a>"
+"%s Please download it %s here %s"
 msgstr ""
 "Il semble que vous n'avez pas Java installé ou est désactivé dans votre "
-"système. <br /> S'il vous plaît télécharger <a href = \"http://www.java.com/"
-"getjava/ \" class =\"link\" target = \"_blank \"> ici </a>"
+"système. %s S'il vous plaît télécharger %s ici %s"
 
 #: views/admin-options.php:4
 msgid "WPBase Youtube Settings"
@@ -85,41 +84,38 @@ msgstr "Recherche, télécharger et convertir des vidéos"
 msgid "Download"
 msgstr "télécharger"
 
-#: views/home.php:51
+#: views/home.php:49
+#, php-format
 msgid ""
-"To download videos, please click '<b>Run</b>' when prompted.<br> Tick the "
-"box '<b>Always trust content from the publisher</b>' to download seamlessly "
-"in the future."
+"To download videos, please click \\'%sRun%s\\' when prompted.%s Tick the box "
+"\\'%sAlways trust content from the publisher%s\\' to download seamlessly in "
+"the future."
 msgstr ""
-"Pour télécharger des vidéos, veuillez cliquer sur \" <b>Exécuter </b>\" "
-"lorsque vous êtes invité. <br> Cochez la case \"Toujours faire confiance au "
-"contenu <b> de l'éditeur </b> 'pour télécharger de façon transparente à "
-"l'avenir."
 
-#: views/home.php:80
+#: views/home.php:82
 msgid "No Videos found or site not supported."
 msgstr "Aucune vidéo trouvée ou un site pas pris en charge."
 
-#: views/home.php:82
+#: views/home.php:85
+#, php-format
 msgid ""
-"Please make sure you selected yes when prompted for '<b>Always trust content "
-"from the publisher</b>'."
+"Please make sure you selected yes when prompted for ' %s Always trust "
+"content from the publisher %s '."
 msgstr ""
 "S'il vous plaît assurez-vous que vous avez sélectionné Oui lorsque vous êtes "
-"invité pour '<b> systématiquement confiance aux contenus de l'éditeur </b>."
+"invité pour '%s systématiquement confiance aux contenus de l'éditeur %s'."
 
-#: views/home.php:93
+#: views/home.php:99
 #, php-format
-msgid "Only <a href=\"%s\">Registered</a> users can download videos."
+msgid "Only %s Registered %s users can download videos."
 msgstr ""
-"Seuls <a href=\"%s\"> enregistrés </a> les utilisateurs peuvent télécharger "
-"les vidéos."
+"Seuls les utilisateurs %s enregistrés %s peuvent télécharger des vidéos."
 
-#: views/home.php:108
+#: views/home.php:115
 msgid "Latest Downloads"
 msgstr "Derniers téléchargements"
 
-#: views/home.php:138
+#: views/home.php:134
 msgid "Now Playing"
 msgstr "En ce moment"
 
