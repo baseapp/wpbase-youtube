@@ -45,8 +45,12 @@
                 <center>
                     <img src="<?php echo site_url(); ?>/wp-content/plugins/wpbase-youtube/media/images/loader.gif" alt="loading" />
                     <br />
-
-                    <span style="color: rgb(204, 51, 51);"><?php _e('To download videos, please click \'<b>Run</b>\' when prompted.<br> Tick the box \'<b>Always trust content from the publisher</b>\' to download seamlessly in the future.', 'wpby'); ?></span>
+                    <?php
+                    $msg = __("To download videos, please click \'%sRun%s\' when prompted.%s Tick the box \'%sAlways trust content from the publisher%s\' to download seamlessly in the future.",'wpby');                     
+                    
+                    $msg = sprintf($msg,'<strong>','</strong>','<br />','<strong>','</strong>');                    
+                    ?>
+                    <span style="color: rgb(204, 51, 51);"><?php _e('', 'wpby'); ?></span>
 
                 </center>
 
@@ -77,7 +81,10 @@
 
                     <span style="color: rgb(204, 51, 51);"><b><?php _e('No Videos found or site not supported.', 'wpby'); ?> </b><br />
 
-        <?php _e('Please make sure you selected yes when prompted for \'<b>Always trust content from the publisher</b>\'.', 'wpby'); ?> </span>
+        <?php 
+        $msg = _e('Please make sure you selected yes when prompted for \' %s Always trust content from the publisher %s \'.', 'wpby');
+        echo sprintf($msg,'<strong>','</strong>');
+         ?> </span>
 
                 </center>
             </div>
@@ -89,8 +96,8 @@
 
                     <span style="color: rgb(204, 51, 51);"><strong>
         <?php
-        $msg = __('Only <a href="%s">Registered</a> users can download videos.', 'wpby');
-        echo sprintf($msg, site_url() . '/wp-login.php');
+        $msg = __('Only %s Registered %s users can download videos.', 'wpby');
+        echo sprintf($msg, '<a href="'.site_url() . '/wp-login.php'.'">','</a>');
         ?></strong><br />                
 
                 </center>

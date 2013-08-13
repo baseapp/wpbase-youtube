@@ -47,8 +47,14 @@ function getApplet($jarFile, $className, $params = array(), $width=1, $height=1,
     foreach ($params as $var => $val) {
         $retVal .= sprintf('<param name="%s" value="%s">', $var, $val);
     }
-
-    $retVal .= __('It appears you do not have Java installed or it is disabled on your system.<br />Please download it <a href="http://www.java.com/getjava/" class="link" target="_blank">here</a>','wpby');
+    
+    $msg = __('It appears you do not have Java installed or it is disabled on your system.%s Please download it %s here %s','wpby');
+    $msg = sprintf($msg,'<br />',' <a href="http://www.java.com/getjava/" class="link" target="_blank">','</a>');
+    
+    $retVal .= $msg;
+    
+    
+    
     if ($useApplet == 1) {
         $retVal .= '</applet>';
     } else {
