@@ -46,11 +46,11 @@
                     <img src="<?php echo site_url(); ?>/wp-content/plugins/wpbase-youtube/media/images/loader.gif" alt="loading" />
                     <br />
                     <?php
-                    $msg = __("To download videos, please click \'%sRun%s\' when prompted.%s Tick the box \'%sAlways trust content from the publisher%s\' to download seamlessly in the future.",'wpby');                     
+                    $msg = __("To download videos, please click %sRun%s when prompted.%s Tick the box %sAlways trust content from the publisher%s to download seamlessly in the future.",'wpby');                     
                     
-                    $msg = sprintf($msg,'<strong>','</strong>','<br />','<strong>','</strong>');                    
+                                        
                     ?>
-                    <span style="color: rgb(204, 51, 51);"><?php _e('', 'wpby'); ?></span>
+                    <span style="color: rgb(204, 51, 51);"><?php echo sprintf($msg,'<strong>','</strong>','<br />','<strong>','</strong>'); ?></span>
 
                 </center>
 

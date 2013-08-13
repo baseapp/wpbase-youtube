@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: counterize\n"
-"POT-Creation-Date: 2013-08-13 13:57+0530\n"
-"PO-Revision-Date: 2013-08-13 14:11+0530\n"
+"POT-Creation-Date: 2013-08-13 14:53+0530\n"
+"PO-Revision-Date: 2013-08-13 14:54+0530\n"
 "Last-Translator: \n"
 "Language-Team: Baseapp <vikrant@baseapp.com>\n"
 "Language: French\n"
@@ -87,10 +87,13 @@ msgstr "télécharger"
 #: views/home.php:49
 #, php-format
 msgid ""
-"To download videos, please click \\'%sRun%s\\' when prompted.%s Tick the box "
-"\\'%sAlways trust content from the publisher%s\\' to download seamlessly in "
-"the future."
+"To download videos, please click %sRun%s when prompted.%s Tick the box "
+"%sAlways trust content from the publisher%s to download seamlessly in the "
+"future."
 msgstr ""
+"Pour télécharger des vidéos, s'il vous plaît cliquer sur %s Exécuter %s "
+"lorsque vous êtes invité. %s Cochez la case %s Toujours faire confiance au "
+"contenu de l'éditeur %s à télécharger de façon transparente à l'avenir. "
 
 #: views/home.php:82
 msgid "No Videos found or site not supported."
